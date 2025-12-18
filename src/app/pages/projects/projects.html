@@ -1,4 +1,71 @@
-<div class="page-container">
-  <h1>Projekte</h1>
-  <p>Hier werden alle Projekte angezeigt.</p>
+<div class="projects-page">
+  <!-- Header Section -->
+  <section class="projects-header">
+    <h1>Projekte</h1>
+    <p class="subtitle">Übersicht meiner Web-Entwicklungsprojekte</p>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="projects-grid">
+    @for (project of projects; track project.id) {
+    <mat-card class="project-card" [class.featured]="project.featured">
+      <!-- Featured Badge -->
+      @if (project.featured) {
+      <div class="featured-badge">
+        <mat-icon>star</mat-icon>
+        <span>Featured</span>
+      </div>
+      }
+
+      <!-- Card Header -->
+      <mat-card-header>
+        <mat-card-title>{{ project.name }}</mat-card-title>
+        <mat-card-subtitle>{{ project.type }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <!-- Card Content -->
+      <mat-card-content>
+        <!-- Description -->
+        <p class="description">{{ project.description }}</p>
+
+        <!-- Tech Stack -->
+        <div class="tech-stack">
+          <h4>Tech-Stack</h4>
+          <mat-chip-set>
+            @for (tech of project.techStack; track tech) {
+            <mat-chip>{{ tech }}</mat-chip>
+            }
+          </mat-chip-set>
+        </div>
+
+        <!-- Status -->
+        <div class="status">
+          <span class="status-badge" [class.completed]="project.status === 'fertig'">
+            {{ project.status }}
+          </span>
+        </div>
+      </mat-card-content>
+
+      <!-- Card Actions -->
+      <mat-card-actions>
+        <a mat-raised-button color="primary" [routerLink]="project.links.details">
+          <mat-icon>info</mat-icon>
+          Details
+        </a>
+
+        @if (project.links.demo) {
+        <a mat-button [href]="project.links.demo" target="_blank" rel="noopener noreferrer">
+          <mat-icon>open_in_new</mat-icon>
+          Live Demo
+        </a>
+        } @if (project.links.github) {
+        <a mat-button [href]="project.links.github" target="_blank" rel="noopener noreferrer">
+          <mat-icon>code</mat-icon>
+          GitHub
+        </a>
+        }
+      </mat-card-actions>
+    </mat-card>
+    }
+  </section>
 </div>

@@ -35,24 +35,20 @@ export class Landing {
 
   readonly highlightProjects: Project[] = [
     {
-      title: 'E-Commerce Platform',
-      description: 'Vollständige E-Commerce-Lösung mit Produktverwaltung, Warenkorb und Checkout.',
-      techStack: ['Angular', 'NestJS', 'PostgreSQL', 'Stripe'],
-      liveUrl: 'https://demo.example.com',
-      detailsUrl: '/projekte',
+      title: 'Issue-Tracker',
+      description:
+        'Kollaboratives Tool zur Verwaltung und Nachverfolgung von Aufgaben, Bugs und Features.',
+      techStack: ['Angular', 'NestJS', 'PostgreSQL', 'JWT'],
+      liveUrl: 'https://issue-tracker-demo.example.com',
+      detailsUrl: '/projects/issue-tracker',
     },
     {
-      title: 'Task Management System',
-      description: 'Kollaboratives Projektmanagement-Tool mit Echtzeit-Updates und Team-Features.',
-      techStack: ['Angular', 'NestJS', 'MongoDB', 'WebSocket'],
-      detailsUrl: '/projekte',
-    },
-    {
-      title: 'Portfolio Website',
-      description: 'Moderne Portfolio-Website mit responsivem Design und Angular Material.',
-      techStack: ['Angular', 'TypeScript', 'SCSS', 'Material'],
-      liveUrl: 'https://portfolio.example.com',
-      detailsUrl: '/projekte',
+      title: 'Budget-Tracker',
+      description:
+        'Persönliches Finanzmanagement-Tool mit visuellen Dashboards und Kategorisierung.',
+      techStack: ['Angular', 'NestJS', 'MongoDB', 'Chart.js'],
+      liveUrl: 'https://budget-tracker-demo.example.com',
+      detailsUrl: '/projects/budget-tracker',
     },
   ];
 

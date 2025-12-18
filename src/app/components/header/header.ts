@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class Header {
   readonly navItems = [
     { label: 'Start', route: '/' },
-    { label: 'Projekte', route: '/projekte' },
+    { label: 'Projekte', route: '/projects' },
     { label: 'Skills', route: '/skills' },
     { label: 'Über mich', route: '/ueber-mich' },
     { label: 'Kontakt', route: '/kontakt' },

@@ -1,0 +1,251 @@
+<div class="project-detail">
+  <!-- Back Button -->
+  <div class="back-nav">
+    <a mat-button routerLink="/projects">
+      <mat-icon>arrow_back</mat-icon>
+      Zurück zu Projekten
+    </a>
+  </div>
+
+  <!-- 1. Project Header -->
+  <section class="project-header">
+    <h1>{{ project.title }}</h1>
+    <p class="short-description">{{ project.shortDescription }}</p>
+
+    <!-- Tech Stack Badges -->
+    <div class="tech-stack">
+      <mat-chip-set>
+        @for (tech of project.techStack; track tech) {
+        <mat-chip>{{ tech }}</mat-chip>
+        }
+      </mat-chip-set>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <a
+        mat-raised-button
+        color="primary"
+        [href]="project.links.demo"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <mat-icon>open_in_new</mat-icon>
+        Live Demo
+      </a>
+      <a
+        mat-stroked-button
+        [href]="project.links.frontendRepo"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <mat-icon>code</mat-icon>
+        Frontend Repo
+      </a>
+      <a
+        mat-stroked-button
+        [href]="project.links.backendRepo"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <mat-icon>code</mat-icon>
+        Backend Repo
+      </a>
+    </div>
+  </section>
+
+  <mat-divider></mat-divider>
+
+  <!-- 2. Problem Statement & Goal -->
+  <section class="section">
+    <h2>
+      <mat-icon>help_outline</mat-icon>
+      Problemstellung & Ziel
+    </h2>
+    <mat-card>
+      <mat-card-content>
+        <div class="info-block">
+          <h3>Warum gibt es dieses Projekt?</h3>
+          <p>{{ problemStatement.why }}</p>
+        </div>
+        <div class="info-block">
+          <h3>Welches Problem wird gelöst?</h3>
+          <p>{{ problemStatement.problem }}</p>
+        </div>
+        <div class="info-block">
+          <h3>Für wen?</h3>
+          <p>{{ problemStatement.target }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <!-- 3. Features -->
+  <section class="section">
+    <h2>
+      <mat-icon>extension</mat-icon>
+      Features
+    </h2>
+    <div class="features-grid">
+      @for (feature of features; track feature.text) {
+      <mat-card class="feature-card">
+        <mat-card-content>
+          <mat-icon color="primary">{{ feature.icon }}</mat-icon>
+          <p>{{ feature.text }}</p>
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
+  </section>
+
+  <!-- 4. Architecture -->
+  <section class="section">
+    <h2>
+      <mat-icon>account_tree</mat-icon>
+      Architektur
+    </h2>
+    <div class="architecture-grid">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ architecture.frontend.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            @for (item of architecture.frontend.items; track item) {
+            <li>{{ item }}</li>
+            }
+          </ul>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ architecture.backend.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            @for (item of architecture.backend.items; track item) {
+            <li>{{ item }}</li>
+            }
+          </ul>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ architecture.database.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            @for (item of architecture.database.items; track item) {
+            <li>{{ item }}</li>
+            }
+          </ul>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ architecture.communication.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            @for (item of architecture.communication.items; track item) {
+            <li>{{ item }}</li>
+            }
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- 5. Screenshots Placeholder -->
+  <section class="section">
+    <h2>
+      <mat-icon>image</mat-icon>
+      Screenshots & UI-Flows
+    </h2>
+    <mat-card>
+      <mat-card-content>
+        <div class="screenshots-placeholder">
+          <mat-icon>photo_library</mat-icon>
+          <p>Screenshots werden hier eingefügt (Dashboard, Detailansicht, Formulare, Tabellen)</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <!-- 6. Technical Details -->
+  <section class="section">
+    <h2>
+      <mat-icon>code</mat-icon>
+      Technische Details
+    </h2>
+    <div class="technical-details">
+      @for (detail of technicalDetails; track detail.title) {
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ detail.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ detail.description }}</p>
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
+  </section>
+
+  <!-- 7. Challenges & Learnings -->
+  <section class="section">
+    <h2>
+      <mat-icon>psychology</mat-icon>
+      Herausforderungen & Learnings
+    </h2>
+
+    <!-- Challenges -->
+    <h3>Herausforderungen</h3>
+    <div class="challenges">
+      @for (challenge of challenges; track challenge.title) {
+      <mat-card class="challenge-card">
+        <mat-card-content>
+          <h4>{{ challenge.title }}</h4>
+          <p class="problem"><strong>Problem:</strong> {{ challenge.problem }}</p>
+          <p class="solution"><strong>Lösung:</strong> {{ challenge.solution }}</p>
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
+
+    <!-- Learnings -->
+    <h3>Learnings</h3>
+    <mat-card>
+      <mat-card-content>
+        <ul class="learnings-list">
+          @for (learning of learnings; track learning) {
+          <li>{{ learning }}</li>
+          }
+        </ul>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Improvements -->
+    <h3>Verbesserungsmöglichkeiten</h3>
+    <mat-card>
+      <mat-card-content>
+        <ul class="improvements-list">
+          @for (improvement of improvements; track improvement) {
+          <li>{{ improvement }}</li>
+          }
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <a mat-raised-button color="primary" routerLink="/projects">
+      <mat-icon>arrow_back</mat-icon>
+      Zurück zu Projekten
+    </a>
+  </div>
+</div>
