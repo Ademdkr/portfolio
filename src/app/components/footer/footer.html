@@ -1,0 +1,23 @@
+<footer class="footer">
+  <div class="footer-content">
+    <span class="copyright">© {{ currentYear }} {{ name }}</span>
+
+    <div class="footer-links">
+      <a
+        [href]="githubUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer-link"
+        aria-label="GitHub"
+      >
+        <mat-icon>code</mat-icon>
+        <span>GitHub</span>
+      </a>
+
+      <a [href]="'mailto:' + email" class="footer-link" aria-label="E-Mail">
+        <mat-icon>email</mat-icon>
+        <span>Mail</span>
+      </a>
+    </div>
+  </div>
+</footer>
