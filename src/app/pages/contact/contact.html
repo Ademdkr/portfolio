@@ -1,4 +1,55 @@
-<div class="page-container">
-  <h1>Kontakt</h1>
-  <p>Hier werden Kontaktmöglichkeiten angezeigt.</p>
+<div class="contact-page">
+  <!-- Header Section -->
+  <section class="contact-header">
+    <h1>Kontakt</h1>
+    <p class="subtitle">Interessiert an einer Zusammenarbeit? Ich freue mich auf Ihre Nachricht!</p>
+  </section>
+
+  <!-- Contact Options -->
+  <section class="contact-options">
+    <mat-card class="contact-card">
+      <mat-card-content>
+        <!-- Email Contact -->
+        <div class="contact-method">
+          <div class="method-icon">
+            <mat-icon>email</mat-icon>
+          </div>
+          <div class="method-content">
+            <h3>E-Mail</h3>
+            <p>Schreiben Sie mir direkt eine E-Mail</p>
+            <button mat-raised-button color="primary" (click)="openEmail()">
+              <mat-icon>send</mat-icon>
+              {{ email }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- GitHub Contact -->
+        <div class="contact-method">
+          <div class="method-icon">
+            <mat-icon>code</mat-icon>
+          </div>
+          <div class="method-content">
+            <h3>GitHub</h3>
+            <p>Schauen Sie sich meine Projekte und den Code an</p>
+            <button mat-raised-button (click)="openGitHub()">
+              <mat-icon>open_in_new</mat-icon>
+              GitHub Profil besuchen
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <!-- Additional Info -->
+  <section class="contact-info">
+    <p class="info-text">
+      <mat-icon>info</mat-icon>
+      Ich antworte in der Regel innerhalb von 24 Stunden.
+    </p>
+  </section>
 </div>
