@@ -1,6 +1,7 @@
 # Skills-Seite Implementierungsanleitung
 
 ## Übersicht
+
 Die Skills-Seite präsentiert technische Kompetenzen in 5 übersichtlichen Kategorien mit verschiedenen Skill-Levels. Ziel ist es, technische Breite und Tiefe zu zeigen – übersichtlich, nicht überladen.
 
 **Route:** `/skills`
@@ -8,11 +9,13 @@ Die Skills-Seite präsentiert technische Kompetenzen in 5 übersichtlichen Kateg
 ## Struktur
 
 ### Komponenten-Dateien
+
 - `src/app/pages/skills/skills.ts` - TypeScript Component
 - `src/app/pages/skills/skills.html` - HTML Template
 - `src/app/pages/skills/skills.scss` - SCSS Styling
 
 ### Skill-Kategorien
+
 1. **Frontend** - Moderne Web-Entwicklung mit Angular und TypeScript
 2. **Backend** - Server-seitige Entwicklung und API-Design
 3. **Datenbanken** - Relationale und NoSQL Datenbanken
@@ -149,11 +152,13 @@ export class Skills {
 ### Helper-Methoden
 
 **getLevelLabel()**: Übersetzt technische Level-Keys in leserfreundliche deutsche Labels
+
 - `expert` → "Expert"
 - `advanced` → "Fortgeschritten"
 - `intermediate` → "Grundkenntnisse"
 
 **getLevelColor()**: Gibt CSS-Klassen für farbcodierte Level zurück
+
 - Wird für dynamisches Styling der Skill-Level-Badges verwendet
 
 ## HTML Template
@@ -171,30 +176,30 @@ export class Skills {
   <!-- Skills Categories Grid -->
   <section class="skills-grid">
     @for (category of skillCategories; track category.title) {
-      <mat-card class="category-card">
-        <!-- Category Header -->
-        <mat-card-header>
-          <div class="category-icon">
-            <mat-icon>{{ category.icon }}</mat-icon>
-          </div>
-          <mat-card-title>{{ category.title }}</mat-card-title>
-          <mat-card-subtitle>{{ category.description }}</mat-card-subtitle>
-        </mat-card-header>
+    <mat-card class="category-card">
+      <!-- Category Header -->
+      <mat-card-header>
+        <div class="category-icon">
+          <mat-icon>{{ category.icon }}</mat-icon>
+        </div>
+        <mat-card-title>{{ category.title }}</mat-card-title>
+        <mat-card-subtitle>{{ category.description }}</mat-card-subtitle>
+      </mat-card-header>
 
-        <!-- Skills List -->
-        <mat-card-content>
-          <div class="skills-list">
-            @for (skill of category.skills; track skill.name) {
-              <div class="skill-item">
-                <span class="skill-name">{{ skill.name }}</span>
-                <span class="skill-level" [class]="getLevelColor(skill.level)">
-                  {{ getLevelLabel(skill.level) }}
-                </span>
-              </div>
-            }
+      <!-- Skills List -->
+      <mat-card-content>
+        <div class="skills-list">
+          @for (skill of category.skills; track skill.name) {
+          <div class="skill-item">
+            <span class="skill-name">{{ skill.name }}</span>
+            <span class="skill-level" [class]="getLevelColor(skill.level)">
+              {{ getLevelLabel(skill.level) }}
+            </span>
           </div>
-        </mat-card-content>
-      </mat-card>
+          }
+        </div>
+      </mat-card-content>
+    </mat-card>
     }
   </section>
 
@@ -207,7 +212,9 @@ export class Skills {
           <div class="summary-text">
             <h3>Kontinuierliches Lernen</h3>
             <p>
-              Ich halte mich stets über neue Technologien und Best Practices auf dem Laufenden und erweitere kontinuierlich mein Skillset durch Projekte, Dokumentationen und praktische Anwendung.
+              Ich halte mich stets über neue Technologien und Best Practices auf dem Laufenden und
+              erweitere kontinuierlich mein Skillset durch Projekte, Dokumentationen und praktische
+              Anwendung.
             </p>
           </div>
         </div>
@@ -220,11 +227,13 @@ export class Skills {
 ### Angular Control Flow
 
 **@for Directives**: Angular 21 Syntax für Schleifen
+
 - Iteriert über `skillCategories` Array
 - Iteriert über `skills` innerhalb jeder Kategorie
 - `track` Keyword für Performance-Optimierung
 
 **Dynamic Class Binding**: `[class]="getLevelColor(skill.level)"`
+
 - Wendet CSS-Klassen basierend auf Skill-Level an
 - Ermöglicht farbcodierte Darstellung
 
@@ -273,6 +282,7 @@ export class Skills {
 ```
 
 **Grid-Eigenschaften:**
+
 - `auto-fit`: Automatische Anpassung der Spaltenanzahl
 - `minmax(380px, 1fr)`: Minimale Breite 380px, flexible maximale Breite
 - Responsive ohne Media Queries für Grid-Struktur
@@ -423,26 +433,31 @@ export class Skills {
 ## Features
 
 ### 1. Kategorisierung
+
 - 5 klare Kategorien mit Icons
 - Jede Kategorie hat Titel, Icon, Beschreibung
 - Logische Gruppierung verwandter Technologien
 
 ### 2. Skill-Level System
+
 - **Expert**: Tiefgreifende Kenntnisse, produktive Nutzung
 - **Fortgeschritten**: Solide Kenntnisse, regelmäßige Nutzung
 - **Grundkenntnisse**: Vertrautheit, grundlegendes Verständnis
 
 ### 3. Visuelle Hierarchie
+
 - Gradient-Header für Aufmerksamkeit
 - Icon-basierte Kategorien für schnelle Orientierung
 - Farbcodierte Level für sofortige Einschätzung
 
 ### 4. Interaktive Elemente
+
 - Hover-Effekte auf Cards (translateY + Shadow)
 - Hover-Effekte auf Skill-Items (translateX + Background)
 - Smooth Transitions für professionelles Gefühl
 
 ### 5. Summary Section
+
 - Info-Card für kontinuierliches Lernen
 - Zeigt Entwickler-Mindset
 - Gradient-Background für visuelles Interesse
@@ -450,6 +465,7 @@ export class Skills {
 ## Responsive Design
 
 ### Desktop (> 768px)
+
 - Grid mit automatischer Spaltenanzahl
 - Volle Abstände und Padding
 - Skill-Items horizontal ausgerichtet
@@ -504,6 +520,7 @@ export class Skills {
 ```
 
 **Mobile Anpassungen:**
+
 - Single-Column Grid
 - Kleinere Font-Sizes
 - Vertikale Skill-Items (Name über Level)
@@ -513,11 +530,13 @@ export class Skills {
 ## Material Design Integration
 
 ### Verwendete Komponenten
+
 - `MatCardModule`: Card-Container mit Header, Content
 - `MatIconModule`: Material Icons für Kategorien und Info
 - `MatChipsModule`: (Optional für zukünftige Erweiterungen)
 
 ### Icons
+
 - `web`: Frontend-Entwicklung
 - `dns`: Backend/Server-Technologien
 - `storage`: Datenbanken
@@ -528,27 +547,32 @@ export class Skills {
 ## Best Practices
 
 ### 1. Type Safety
+
 - Strikte Interfaces für `Skill` und `SkillCategory`
 - Union Types für `level` Enum
 - `readonly` Array für Immutability
 
 ### 2. Performance
+
 - `track` in @for Loops für Change Detection
 - Keine unnötigen Re-Renders
 - Effizientes Grid-Layout
 
 ### 3. Maintainability
+
 - Zentrale Datenverwaltung im Component
 - Helper-Methoden für Logik-Extraktion
 - Klare CSS-Klassennamen
 
 ### 4. User Experience
+
 - Smooth Animations (0.2s - 0.3s)
 - Hover-Feedback auf interaktiven Elementen
 - Klare visuelle Hierarchie
 - Responsive ohne Layout-Breaks
 
 ### 5. Accessibility
+
 - Semantische HTML-Struktur
 - Ausreichende Farbkontraste für Level-Badges
 - Material Design Komponenten (inherent accessibility)
@@ -556,6 +580,7 @@ export class Skills {
 ## Erweiterungsmöglichkeiten
 
 ### 1. Filter-Funktion
+
 ```typescript
 selectedLevel: string | null = null;
 
@@ -566,24 +591,29 @@ getFilteredSkills(category: SkillCategory) {
 ```
 
 ### 2. Skill-Details Modal
+
 - Click auf Skill → Modal mit Details
 - Projekterfahrung, Zertifikate, Zeitraum
 
 ### 3. Skill-Proficiency Bars
+
 - Visuelle Progress-Bars statt Text-Badges
 - Prozentuale Darstellung
 
 ### 4. Sortierung
+
 - Alphabetisch, nach Level, nach Kategorie
 - Toggle-Buttons für Sortier-Optionen
 
 ### 5. Animationen
+
 - Staggered Animations beim Page-Load
 - Animierte Skill-Level-Änderungen
 
 ## Integration in Portfolio
 
 ### Routing
+
 Die Skills-Seite ist bereits in `app.routes.ts` integriert:
 
 ```typescript
@@ -594,6 +624,7 @@ Die Skills-Seite ist bereits in `app.routes.ts` integriert:
 ```
 
 ### Navigation
+
 Die Header-Navigation enthält bereits den Link:
 
 ```html
@@ -601,6 +632,7 @@ Die Header-Navigation enthält bereits den Link:
 ```
 
 ### Landing Page Preview
+
 Die Landing Page enthält bereits einen Skills-Teaser, der zu `/skills` verlinkt.
 
 ## Zusammenfassung
@@ -614,6 +646,6 @@ Die Skills-Seite präsentiert technische Kompetenzen professionell und übersich
 ✅ Interaktive Hover-Effekte  
 ✅ Summary-Section für Entwickler-Mindset  
 ✅ Type-safe TypeScript Implementation  
-✅ Performantes Rendering mit Angular Control Flow  
+✅ Performantes Rendering mit Angular Control Flow
 
 Die Implementierung zeigt technische Breite (viele Technologien) und Tiefe (unterschiedliche Level) ohne überladen zu wirken.

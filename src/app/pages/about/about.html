@@ -1,4 +1,80 @@
-<div class="page-container">
-  <h1>Über mich</h1>
-  <p>Hier werden Informationen über mich angezeigt.</p>
+<div class="about-page">
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <div class="hero-content">
+      <h1>Über mich</h1>
+      <p class="intro">
+        Hi, ich bin <strong>Adem Dokur</strong> – angehender Fachinformatiker für
+        Anwendungsentwicklung mit Fokus auf <strong>Full-Stack Web-Entwicklung</strong>.
+      </p>
+      <p class="tagline">
+        Vom Quereinsteiger zum Web-Developer durch strukturiertes Lernen und praxisnahe Projekte.
+      </p>
+    </div>
+  </section>
+
+  <!-- Journey Timeline -->
+  <section class="journey-section">
+    <h2>Mein Weg</h2>
+    <div class="timeline">
+      @for (step of journey; track step.year) {
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <mat-icon>{{ step.icon }}</mat-icon>
+        </div>
+        <div class="timeline-content">
+          <span class="timeline-year">{{ step.year }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </section>
+
+  <!-- Working Principles -->
+  <section class="working-principles">
+    <h2>Arbeitsweise</h2>
+    <div class="principles-grid">
+      @for (principle of workingPrinciples; track principle.title) {
+      <mat-card class="principle-card">
+        <div class="principle-icon">
+          <mat-icon>{{ principle.icon }}</mat-icon>
+        </div>
+        <h3>{{ principle.title }}</h3>
+        <p>{{ principle.description }}</p>
+      </mat-card>
+      }
+    </div>
+  </section>
+
+  <!-- Technical Interests -->
+  <section class="interests-section">
+    <h2>Technische Interessen</h2>
+    <mat-chip-set class="interests-chips">
+      @for (interest of technicalInterests; track interest) {
+      <mat-chip>{{ interest }}</mat-chip>
+      }
+    </mat-chip-set>
+  </section>
+
+  <!-- Goal Section -->
+  <section class="goal-section">
+    <mat-card class="goal-card">
+      <mat-card-content>
+        <div class="goal-content">
+          <mat-icon>flag</mat-icon>
+          <div class="goal-text">
+            <h3>Mein Ziel</h3>
+            <p>
+              Ich suche eine <strong>Junior Full-Stack Developer</strong> Position, in der ich mein
+              erlerntes Wissen in einem professionellen Team einbringen und weiter ausbauen kann.
+              Besonders interessiere ich mich für moderne Web-Technologien und saubere, wartbare
+              Codebases.
+            </p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
 </div>
