@@ -22,7 +22,7 @@
     font-size: 3rem;
     font-weight: 700;
     margin: 0 0 1rem 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -47,11 +47,11 @@
 
     mat-chip {
       font-size: 0.9rem;
-      background: #f3f4f6;
-      color: #555;
+      background: var(--color-gray-100);
+      color: var(--text-secondary);
 
       &:hover {
-        background: #667eea;
+        background: var(--color-primary-600);
         color: white;
       }
     }
@@ -88,7 +88,7 @@ mat-divider {
     margin-bottom: 2rem;
 
     mat-icon {
-      color: #667eea;
+      color: var(--color-primary-600);
       font-size: 2rem;
       width: 2rem;
       height: 2rem;
@@ -112,7 +112,7 @@ mat-divider {
     h3 {
       font-size: 1.1rem;
       font-weight: 600;
-      color: #667eea;
+      color: var(--color-primary-600);
       margin: 0 0 0.5rem 0;
     }
 
@@ -162,7 +162,7 @@ mat-divider {
     mat-card-title {
       font-size: 1.25rem;
       font-weight: 600;
-      color: #667eea;
+      color: var(--color-primary-600);
     }
 
     ul {
@@ -184,7 +184,7 @@ mat-divider {
         &::before {
           content: '→';
           margin-right: 0.5rem;
-          color: #667eea;
+          color: var(--color-primary-600);
           font-weight: bold;
         }
       }
@@ -221,7 +221,7 @@ mat-divider {
     mat-card-title {
       font-size: 1.1rem;
       font-weight: 600;
-      color: #667eea;
+      color: var(--color-primary-600);
     }
 
     p {
@@ -257,7 +257,7 @@ mat-divider {
         }
 
         strong {
-          color: #667eea;
+          color: var(--color-primary-600);
         }
       }
 
@@ -270,10 +270,10 @@ mat-divider {
       }
 
       .solution {
-        color: #059669;
+        color: var(--color-primary-600);
 
         strong {
-          color: #059669;
+          color: var(--color-primary-600);
         }
       }
     }
@@ -290,8 +290,8 @@ mat-divider {
     padding: 0.75rem 0;
     font-size: 1rem;
     line-height: 1.6;
-    color: #555;
-    border-bottom: 1px solid #f0f0f0;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-primary);
 
     &:last-child {
       border-bottom: none;
@@ -300,7 +300,7 @@ mat-divider {
     &::before {
       content: '✓';
       margin-right: 0.75rem;
-      color: #059669;
+      color: var(--color-primary-600);
       font-weight: bold;
       font-size: 1.1rem;
     }

@@ -19,8 +19,9 @@
 .logo {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1976d2;
+  color: var(--color-primary-600);
   cursor: pointer;
+  text-decoration: none !important;
 }
 
 .nav-links {
@@ -35,21 +36,21 @@
   transition: color 0.3s ease;
 
   &:hover {
-    color: #1976d2;
+    color: var(--color-primary-600);
   }
 
   &.active {
-    color: #1976d2;
-    background: rgba(25, 118, 210, 0.08);
+    color: var(--color-primary-600);
+    background: var(--color-primary-100);
   }
 }
 
 .github-button {
-  color: #333;
+  color: var(--text-primary);
   transition: color 0.3s ease;
 
   &:hover {
-    color: #1976d2;
+    color: var(--color-primary-600);
   }
 }
 

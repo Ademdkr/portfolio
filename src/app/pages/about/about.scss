@@ -1,6 +1,6 @@
 .about-page {
   padding: 4rem 2rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 
   section {
@@ -10,7 +10,7 @@
   h2 {
     font-size: 2rem;
     font-weight: 700;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 2.5rem;
     text-align: center;
     position: relative;
@@ -23,21 +23,42 @@
       transform: translateX(-50%);
       width: 60px;
       height: 4px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--gradient-primary);
       border-radius: 2px;
     }
   }
 }
 
+.about-header {
+  text-align: center;
+  margin-bottom: 4rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+}
+
 .about-hero {
   text-align: center;
-  padding: 3rem 0;
+  padding: 0;
 
   h1 {
     font-size: 3rem;
     font-weight: 700;
     margin: 0 0 1.5rem 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -45,7 +66,7 @@
 
   .intro {
     font-size: 1.25rem;
-    color: #333;
+    color: var(--text-primary);
     line-height: 1.8;
     margin: 0 0 1rem 0;
     max-width: 800px;
@@ -53,14 +74,14 @@
     margin-right: auto;
 
     strong {
-      color: #667eea;
+      color: var(--color-primary-600);
       font-weight: 600;
     }
   }
 
   .tagline {
     font-size: 1.125rem;
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.7;
     max-width: 700px;
     margin: 0 auto;
@@ -81,7 +102,7 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+      background: var(--gradient-primary);
     }
   }
 
@@ -101,11 +122,11 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
     position: relative;
     z-index: 1;
 
@@ -125,8 +146,8 @@
       display: inline-block;
       font-size: 0.875rem;
       font-weight: 700;
-      color: #667eea;
-      background: #667eea20;
+      color: var(--color-primary-600);
+      background: var(--color-primary-100);
       padding: 0.25rem 0.75rem;
       border-radius: 12px;
       margin-bottom: 0.75rem;
@@ -156,8 +177,13 @@
   }
 
   .principle-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     padding: 2rem 1.5rem;
+    background: white;
+    border: 1px solid var(--color-gray-300);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     &:hover {
@@ -166,13 +192,13 @@
     }
 
     .principle-icon {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
       width: 64px;
       height: 64px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--gradient-primary);
       margin-bottom: 1.5rem;
 
       mat-icon {
@@ -186,13 +212,13 @@
     h3 {
       font-size: 1.25rem;
       font-weight: 600;
-      color: #333;
+      color: var(--text-primary);
       margin: 0 0 0.75rem 0;
     }
 
     p {
       font-size: 0.95rem;
-      color: #666;
+      color: var(--text-secondary);
       line-height: 1.6;
       margin: 0;
     }
@@ -211,13 +237,18 @@
     mat-chip {
       font-size: 1rem;
       padding: 0.75rem 1.5rem;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
+      background: var(--color-primary-50);
+      color: var(--color-primary-700);
+      border: 1px solid var(--color-primary-200);
       transition: all 0.2s ease;
+      font-weight: 500;
 
       &:hover {
-        background: #667eea10;
-        border-color: #667eea;
+        background: var(--color-primary-600);
+        color: white;
+        border-color: var(--color-primary-600);
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
         transform: translateY(-2px);
       }
     }
@@ -226,8 +257,8 @@
 
 .goal-section {
   .goal-card {
-    background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
-    border: 1px solid #667eea30;
+    background: var(--gradient-subtle);
+    border: 1px solid var(--color-primary-200);
 
     mat-card-content {
       padding: 2rem;
@@ -243,7 +274,7 @@
         font-size: 3rem;
         width: 3rem;
         height: 3rem;
-        color: #667eea;
+        color: var(--color-primary-600);
       }
 
       .goal-text {
@@ -261,7 +292,7 @@
           margin: 0;
 
           strong {
-            color: #667eea;
+            color: var(--color-primary-600);
             font-weight: 600;
           }
         }

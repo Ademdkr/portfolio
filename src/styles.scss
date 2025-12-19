@@ -2,12 +2,211 @@
 
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
+// CSS Variables for Custom Color Scheme
+:root {
+  // Primary Colors (Indigo)
+  --color-primary-50: #eef2ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+
+  // Accent Colors (Amber)
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+
+  // Neutral Colors (Slate)
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1e293b;
+  --color-gray-900: #0f172a;
+
+  // Amber Colors (Extended)
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+
+  // Gradients
+  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%);
+  --gradient-subtle: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+
+  // Text Colors
+  --text-primary: var(--color-gray-900);
+  --text-secondary: var(--color-gray-600);
+
+  // Background Colors
+  --bg-primary: #ffffff;
+  --bg-secondary: var(--color-gray-50);
+
+  // Border Colors
+  --border-primary: var(--color-gray-200);
+
+  // Material Design 3 CSS Variables Override - Complete Set
+  --mat-sys-primary: #4f46e5;
+  --mat-sys-on-primary: #ffffff;
+  --mat-sys-primary-container: #e0e7ff;
+  --mat-sys-on-primary-container: #312e81;
+
+  --mat-sys-secondary: #f59e0b;
+  --mat-sys-on-secondary: #ffffff;
+
+  --mat-sys-surface: #ffffff;
+  --mat-sys-on-surface: #0f172a;
+
+  // Material Button Variables
+  --mdc-filled-button-container-color: #4f46e5;
+  --mdc-filled-button-label-text-color: #ffffff;
+  --mdc-protected-button-container-color: #4f46e5;
+  --mdc-protected-button-label-text-color: #ffffff;
+
+  // Additional Material Theme Variables
+  --mdc-theme-primary: #4f46e5;
+  --mdc-theme-secondary: #f59e0b;
+  --mdc-theme-on-primary: #ffffff;
+  --mdc-theme-on-secondary: #ffffff;
+}
+
 html,
 body {
   height: 100%;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+// Material Button Overrides - Comprehensive
+.mat-mdc-raised-button,
+.mat-mdc-unelevated-button,
+.mat-mdc-fab,
+.mat-mdc-mini-fab {
+  &.mat-primary,
+  &[color='primary'] {
+    --mdc-filled-button-container-color: #4f46e5 !important;
+    --mdc-filled-button-label-text-color: #ffffff !important;
+    background-color: #4f46e5 !important;
+    color: white !important;
+
+    &:hover:not([disabled]) {
+      background-color: #4338ca !important;
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.4) !important;
+      transform: translateY(-2px);
+    }
+  }
+
+  &.mat-accent,
+  &[color='accent'] {
+    --mdc-filled-button-container-color: #f59e0b !important;
+    --mdc-filled-button-label-text-color: #ffffff !important;
+    background-color: #f59e0b !important;
+    color: white !important;
+
+    &:hover:not([disabled]) {
+      background-color: #d97706 !important;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4) !important;
+      transform: translateY(-2px);
+    }
+  }
+
+  &:not(.mat-primary):not(.mat-accent):not(.mat-warn):not([color]) {
+    background-color: #475569 !important;
+    color: white !important;
+
+    &:hover:not([disabled]) {
+      background-color: #334155 !important;
+      box-shadow: 0 4px 12px rgba(71, 85, 105, 0.3) !important;
+    }
+  }
+}
+
+.mat-mdc-button,
+.mat-mdc-outlined-button {
+  &.mat-primary,
+  &[color='primary'] {
+    --mdc-text-button-label-text-color: #4f46e5 !important;
+    --mdc-outlined-button-label-text-color: #4f46e5 !important;
+    color: #4f46e5 !important;
+
+    &:hover:not([disabled]) {
+      background-color: #eef2ff !important;
+    }
+  }
+
+  &.mat-accent,
+  &[color='accent'] {
+    --mdc-text-button-label-text-color: #f59e0b !important;
+    --mdc-outlined-button-label-text-color: #f59e0b !important;
+    color: #f59e0b !important;
+
+    &:hover:not([disabled]) {
+      background-color: #fffbeb !important;
+    }
+  }
+}
+
+// Material Card Enhancement
+.mat-mdc-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-gray-300);
+  border-radius: 16px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  background: white;
+
+  &:hover {
+    box-shadow: 0 12px 28px rgba(79, 70, 229, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-primary-200);
+    transform: translateY(-4px);
+  }
+}
+
+// Global utility classes
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: var(--gradient-primary);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-tertiary {
+  color: var(--text-tertiary);
+}
+
+// Smooth transitions for all interactive elements
+button,
+a,
+.mat-mdc-card,
+.mat-mdc-chip {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

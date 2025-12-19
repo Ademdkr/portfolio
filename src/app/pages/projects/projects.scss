@@ -12,7 +12,7 @@
     font-size: 3rem;
     font-weight: 700;
     margin: 0 0 1rem 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -20,15 +20,23 @@
 
   .subtitle {
     font-size: 1.25rem;
-    color: #666;
+    color: var(--text-secondary);
     margin: 0;
   }
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .project-card {
@@ -43,7 +51,7 @@
   }
 
   &.featured {
-    border: 2px solid #667eea;
+    border: 2px solid var(--color-primary-600);
   }
 
   mat-card-header {
@@ -53,12 +61,12 @@
   mat-card-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
   }
 
   mat-card-subtitle {
     font-size: 0.95rem;
-    color: #888;
+    color: var(--text-secondary);
     margin-top: 0.25rem;
   }
 
@@ -72,7 +80,7 @@
   .description {
     font-size: 1rem;
     line-height: 1.6;
-    color: #555;
+    color: var(--text-secondary);
     margin: 0;
   }
 
@@ -81,7 +89,7 @@
       font-size: 0.9rem;
       font-weight: 600;
       text-transform: uppercase;
-      color: #666;
+      color: var(--text-secondary);
       margin: 0 0 0.75rem 0;
       letter-spacing: 0.5px;
     }
@@ -94,12 +102,17 @@
 
     mat-chip {
       font-size: 0.85rem;
-      background: #f3f4f6;
-      color: #555;
+      background: var(--color-gray-100);
+      color: var(--color-gray-600);
+      border: 1px solid var(--color-gray-300);
+      font-weight: 500;
 
       &:hover {
-        background: #667eea;
-        color: white;
+        background: var(--color-gray-200);
+        color: var(--color-gray-700);
+        border-color: var(--color-gray-400);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(71, 85, 105, 0.15);
       }
     }
   }
@@ -113,14 +126,14 @@
       border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 600;
-      background: #fef3c7;
-      color: #92400e;
-      border: 1px solid #fbbf24;
+      background: var(--color-amber-100);
+      color: var(--color-amber-800);
+      border: 1px solid var(--color-amber-600);
 
       &.completed {
-        background: #d1fae5;
-        color: #065f46;
-        border: 1px solid #34d399;
+        background: var(--color-primary-100);
+        color: var(--color-primary-800);
+        border: 1px solid var(--color-primary-600);
       }
     }
   }
@@ -154,7 +167,7 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   color: white;
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
