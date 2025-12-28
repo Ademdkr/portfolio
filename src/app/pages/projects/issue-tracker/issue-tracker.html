@@ -35,49 +35,35 @@
       </a>
       <a
         mat-stroked-button
-        [href]="project.links.frontendRepo"
+        [href]="project.links.repository"
         target="_blank"
         rel="noopener noreferrer"
       >
         <mat-icon>code</mat-icon>
-        Frontend Repo
-      </a>
-      <a
-        mat-stroked-button
-        [href]="project.links.backendRepo"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <mat-icon>code</mat-icon>
-        Backend Repo
+        Repository
       </a>
     </div>
   </section>
 
   <mat-divider></mat-divider>
 
-  <!-- 2. Problem Statement & Goal -->
+  <!-- 2. Learning Focus -->
   <section class="section">
     <h2>
-      <mat-icon>help_outline</mat-icon>
-      Problemstellung & Ziel
+      <mat-icon>school</mat-icon>
+      Lernfokus & Kompetenzen
     </h2>
-    <mat-card>
-      <mat-card-content>
-        <div class="info-block">
-          <h3>Warum gibt es dieses Projekt?</h3>
-          <p>{{ problemStatement.why }}</p>
-        </div>
-        <div class="info-block">
-          <h3>Welches Problem wird gelöst?</h3>
-          <p>{{ problemStatement.problem }}</p>
-        </div>
-        <div class="info-block">
-          <h3>Für wen?</h3>
-          <p>{{ problemStatement.target }}</p>
-        </div>
-      </mat-card-content>
-    </mat-card>
+    <div class="learning-focus-grid">
+      @for (focus of learningFocus; track focus.title) {
+      <mat-card class="focus-card">
+        <mat-card-content>
+          <mat-icon color="primary">{{ focus.icon }}</mat-icon>
+          <h3>{{ focus.title }}</h3>
+          <p>{{ focus.description }}</p>
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
   </section>
 
   <!-- 3. Features -->
@@ -159,20 +145,45 @@
     </div>
   </section>
 
-  <!-- 5. Screenshots Placeholder -->
+  <!-- 5. Screenshots & UI-Flows -->
   <section class="section">
     <h2>
       <mat-icon>image</mat-icon>
       Screenshots & UI-Flows
     </h2>
-    <mat-card>
-      <mat-card-content>
-        <div class="screenshots-placeholder">
-          <mat-icon>photo_library</mat-icon>
-          <p>Screenshots werden hier eingefügt (Dashboard, Detailansicht, Formulare, Tabellen)</p>
+    <div class="screenshots-grid">
+      @for (screenshot of screenshots; track screenshot.label) {
+      <div class="screenshot-item" (click)="openScreenshot(screenshot)">
+        <img
+          [src]="'/assets/projects/issue-tracker/screenshots/' + screenshot.image"
+          [alt]="screenshot.label"
+        />
+        <div class="screenshot-overlay">
+          <mat-icon>zoom_in</mat-icon>
+          <span>{{ screenshot.label }}</span>
         </div>
-      </mat-card-content>
-    </mat-card>
+      </div>
+      }
+    </div>
+
+    <!-- Lightbox Modal -->
+    @if (selectedScreenshot) {
+    <div class="lightbox-overlay" (click)="closeScreenshot()">
+      <div class="lightbox-content" (click)="$event.stopPropagation()">
+        <button mat-icon-button class="close-button" (click)="closeScreenshot()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <img
+          [src]="'/assets/projects/issue-tracker/screenshots/' + selectedScreenshot.image"
+          [alt]="selectedScreenshot.label"
+        />
+        <div class="lightbox-info">
+          <h3>{{ selectedScreenshot.label }}</h3>
+          <p>{{ selectedScreenshot.description }}</p>
+        </div>
+      </div>
+    </div>
+    }
   </section>
 
   <!-- 6. Technical Details -->
@@ -183,13 +194,44 @@
     </h2>
     <div class="technical-details">
       @for (detail of technicalDetails; track detail.title) {
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ detail.title }}</mat-card-title>
+      <mat-card class="collapsible-card">
+        <mat-card-header (click)="toggleSection(detail.title)" class="clickable-header">
+          <mat-card-title>
+            <span>{{ detail.title }}</span>
+            <mat-icon class="expand-icon" [class.expanded]="isSectionExpanded(detail.title)">
+              expand_more
+            </mat-icon>
+          </mat-card-title>
         </mat-card-header>
-        <mat-card-content>
+        @if (isSectionExpanded(detail.title)) {
+        <mat-card-content class="collapsible-content">
+          @if (detail.imagePath) {
+          <div class="architecture-diagram">
+            <img [src]="detail.imagePath" [alt]="detail.title" />
+          </div>
+          } @if (detail.description) {
           <p>{{ detail.description }}</p>
+          } @if (detail.items) {
+          <ul class="detail-list">
+            @for (item of detail.items; track item.label) {
+            <li>
+              <strong>{{ item.label }}:</strong> {{ item.description }}
+              @if (item.code && !item.code.endsWith('.png')) {
+              <pre class="code-example"><code>{{ item.code }}</code></pre>
+              } @if (item.code && item.code.endsWith('.png')) {
+              <div class="screenshot">
+                <img
+                  [src]="'/assets/projects/issue-tracker/screenshots/' + item.code"
+                  [alt]="item.label"
+                />
+              </div>
+              }
+            </li>
+            }
+          </ul>
+          }
         </mat-card-content>
+        }
       </mat-card>
       }
     </div>
@@ -227,9 +269,14 @@
         </ul>
       </mat-card-content>
     </mat-card>
+  </section>
 
-    <!-- Improvements -->
-    <h3>Verbesserungsmöglichkeiten</h3>
+  <!-- 8. Mögliche Verbesserungen -->
+  <section class="section">
+    <h2>
+      <mat-icon>lightbulb</mat-icon>
+      Mögliche Verbesserungen
+    </h2>
     <mat-card>
       <mat-card-content>
         <ul class="improvements-list">
@@ -240,12 +287,4 @@
       </mat-card-content>
     </mat-card>
   </section>
-
-  <!-- Bottom Navigation -->
-  <div class="bottom-nav">
-    <a mat-raised-button color="primary" routerLink="/projects">
-      <mat-icon>arrow_back</mat-icon>
-      Zurück zu Projekten
-    </a>
-  </div>
 </div>

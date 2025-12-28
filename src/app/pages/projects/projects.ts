@@ -33,8 +33,16 @@ export class Projects {
       name: 'Issue-Tracker',
       type: 'Full-Stack Web App',
       description:
-        'Kollaboratives Tool zur Verwaltung und Nachverfolgung von Aufgaben, Bugs und Features mit Rollen-Management, Workflows und Echtzeitaktualisierungen.',
-      techStack: ['Angular', 'NestJS', 'PostgreSQL', 'TypeORM', 'JWT'],
+        'Monorepo-basiertes Issue-Management-System mit JWT-Authentication, RBAC und Policy-basierter Authorization. Nx Monorepo mit shared-types Library für Type-Safety zwischen Frontend und Backend.',
+      techStack: [
+        'Angular 20',
+        'NestJS 11',
+        'PostgreSQL',
+        'Prisma ORM',
+        'JWT',
+        'Passport',
+        'Nx Monorepo',
+      ],
       status: 'fertig',
       links: {
         demo: 'https://issue-tracker-demo.example.com',
@@ -48,8 +56,16 @@ export class Projects {
       name: 'Budget-Tracker',
       type: 'Full-Stack Web App',
       description:
-        'Persönliches Finanzmanagement-Tool zur Verfolgung von Einnahmen, Ausgaben und Budgets mit visuellen Dashboards und Kategorisierung.',
-      techStack: ['Angular', 'NestJS', 'MongoDB', 'Mongoose', 'Chart.js'],
+        'Moderne Full-Stack-Webanwendung zur Verwaltung persönlicher Finanzen, Budgets und Transaktionen. Mit Chart.js Visualisierungen, PWA-Support, Session-basierter Authentifizierung und optimistischem UI.',
+      techStack: [
+        'Angular 18',
+        'NestJS 10',
+        'PostgreSQL 16',
+        'Prisma ORM',
+        'Chart.js',
+        'RxJS',
+        'Angular Material',
+      ],
       status: 'fertig',
       links: {
         demo: 'https://budget-tracker-demo.example.com',
