@@ -1,0 +1,56 @@
+<div class="skills-page">
+  <!-- Header Section -->
+  <section class="skills-header">
+    <h1>Skills & Technologien</h1>
+    <p class="subtitle">Mein technisches Know-how im Überblick</p>
+  </section>
+
+  <!-- Skills Categories Grid -->
+  <section class="skills-grid">
+    @for (category of skillCategories; track category.title) {
+    <mat-card class="category-card">
+      <!-- Category Header -->
+      <mat-card-header>
+        <div class="category-icon">
+          <mat-icon>{{ category.icon }}</mat-icon>
+        </div>
+        <mat-card-title>{{ category.title }}</mat-card-title>
+        <mat-card-subtitle>{{ category.description }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <!-- Skills List -->
+      <mat-card-content>
+        <div class="skills-list">
+          @for (skill of category.skills; track skill.name) {
+          <div class="skill-item">
+            <span class="skill-name">{{ skill.name }}</span>
+            <span class="skill-level" [class]="getLevelColor(skill.level)">
+              {{ getLevelLabel(skill.level) }}
+            </span>
+          </div>
+          }
+        </div>
+      </mat-card-content>
+    </mat-card>
+    }
+  </section>
+
+  <!-- Summary Section -->
+  <section class="skills-summary">
+    <mat-card>
+      <mat-card-content>
+        <div class="summary-content">
+          <mat-icon>info</mat-icon>
+          <div class="summary-text">
+            <h3>Kontinuierliches Lernen</h3>
+            <p>
+              Ich halte mich stets über neue Technologien und Best Practices auf dem Laufenden und
+              erweitere kontinuierlich mein Skillset durch Projekte, Dokumentationen und praktische
+              Anwendung.
+            </p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>
