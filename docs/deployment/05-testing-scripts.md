@@ -116,6 +116,7 @@ pnpm run docker:logs
 **Output:** Letzte 20 Log-Einträge
 
 **Verwendung:**
+
 - Debugging
 - Fehlersuche
 - Monitoring
@@ -129,11 +130,13 @@ pnpm run docker:restart
 ```
 
 **Schritte:**
+
 1. Stop Container
 2. Remove Container
 3. Start neu
 
 **Verwendung:**
+
 - Nach Code-Änderungen
 - Schneller als manuell stop + run
 
@@ -166,6 +169,7 @@ pnpm run local:deploy
 ```
 
 **Schritte:**
+
 1. Install Dependencies
 2. Lint
 3. Test
@@ -177,6 +181,7 @@ pnpm run local:deploy
 **Output:** Container läuft auf http://localhost:8080
 
 **Verwendung:**
+
 - **Haupt-Command vor Push**
 - Simuliert kompletten Deployment-Flow
 - Startet automatisch Container zum Testen
@@ -190,11 +195,13 @@ pnpm run local:cleanup
 ```
 
 **Features:**
+
 - Stoppt und löscht Container
 - Fail-safe: Kein Fehler wenn Container nicht existiert
 - Nutzt `|| echo` Fallback
 
 **Verwendung:**
+
 - Vor `local:deploy`
 - Cleanup nach Tests
 - Aufräumen bei Problemen
@@ -204,6 +211,7 @@ pnpm run local:cleanup
 ### Kompletter Test (wie GitHub Actions)
 
 **Empfohlen - Alles in einem:**
+
 ```bash
 pnpm run local:cleanup
 pnpm run local:deploy
@@ -211,6 +219,7 @@ pnpm run local:deploy
 ```
 
 **Manuell (Schritt für Schritt):**
+
 ```bash
 # 1. Cleanup
 pnpm run local:cleanup
@@ -403,13 +412,13 @@ ng add @angular-eslint/schematics
 
 ## Quick Reference
 
-| Script | Zweck | Verwendung |
-|--------|-------|------------|
-| `local:deploy` | **Komplett: CI + Container** | Vor jedem Push (empfohlen) |
-| `ci:full-test` | Nur CI validierung | Workflow-Test ohne Container |
-| `docker:restart` | Container neu starten | Nach Code-Änderungen |
-| `docker:logs` | Logs anzeigen | Debugging |
-| `local:cleanup` | Container löschen | Aufräumen |
+| Script           | Zweck                        | Verwendung                   |
+| ---------------- | ---------------------------- | ---------------------------- |
+| `local:deploy`   | **Komplett: CI + Container** | Vor jedem Push (empfohlen)   |
+| `ci:full-test`   | Nur CI validierung           | Workflow-Test ohne Container |
+| `docker:restart` | Container neu starten        | Nach Code-Änderungen         |
+| `docker:logs`    | Logs anzeigen                | Debugging                    |
+| `local:cleanup`  | Container löschen            | Aufräumen                    |
 
 ## Hinweise
 

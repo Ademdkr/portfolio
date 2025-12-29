@@ -29,12 +29,14 @@ In diesem Schritt richtest du das Portfolio als Web Service auf Render ein. Rend
 ### 2.2 Repository verbinden
 
 **Option A: Alle Repositories (empfohlen)**
+
 1. Wähle **"Connect GitHub"**
 2. Klicke **"Configure GitHub App"**
 3. Wähle **"All repositories"** oder spezifische Repos
 4. Autorisiere
 
 **Option B: Public Repository**
+
 1. Gib Repository URL ein: `https://github.com/[username]/portfolio`
 
 ### 2.3 Repository auswählen
@@ -46,26 +48,27 @@ In diesem Schritt richtest du das Portfolio als Web Service auf Render ein. Rend
 
 ### 3.1 Basic Settings
 
-| Feld | Wert |
-|------|------|
-| **Name** | `portfolio` (oder eigener Name) |
-| **Region** | `Frankfurt (EU Central)` (empfohlen für Deutschland) |
-| **Branch** | `main` |
-| **Root Directory** | Leer lassen (falls Mono-Repo: Pfad angeben) |
+| Feld               | Wert                                                 |
+| ------------------ | ---------------------------------------------------- |
+| **Name**           | `portfolio` (oder eigener Name)                      |
+| **Region**         | `Frankfurt (EU Central)` (empfohlen für Deutschland) |
+| **Branch**         | `main`                                               |
+| **Root Directory** | Leer lassen (falls Mono-Repo: Pfad angeben)          |
 
 ### 3.2 Build & Deploy Settings
 
-| Feld | Wert |
-|------|------|
-| **Runtime** | `Docker` |
-| **Dockerfile Path** | `Dockerfile` |
-| **Docker Context** | `.` (Root Directory) |
+| Feld                | Wert                 |
+| ------------------- | -------------------- |
+| **Runtime**         | `Docker`             |
+| **Dockerfile Path** | `Dockerfile`         |
+| **Docker Context**  | `.` (Root Directory) |
 
 **Wichtig:** Render erkennt automatisch das Dockerfile!
 
 ### 3.3 Instance Type
 
 **Free Tier:**
+
 - **Instance Type:** `Free`
 - **CPU:** 0.1 CPU
 - **RAM:** 512 MB
@@ -75,6 +78,7 @@ In diesem Schritt richtest du das Portfolio als Web Service auf Render ein. Rend
 **Hinweis:** Free Tier reicht für Portfolio vollkommen aus!
 
 **Starter Tier (Optional - $7/Monat):**
+
 - Kein Sleep
 - 0.5 CPU
 - 512 MB RAM
@@ -83,13 +87,16 @@ In diesem Schritt richtest du das Portfolio als Web Service auf Render ein. Rend
 ### 3.4 Advanced Settings (Optional)
 
 **Health Check Path:**
+
 ```
 /health
 ```
+
 - Nutzt den `/health` Endpoint aus nginx.conf
 - Render prüft damit, ob Service läuft
 
 **Auto-Deploy:**
+
 - ✅ **Enabled** (automatisch bei Push auf main)
 
 ## Schritt 4: Environment Variables (Optional)
@@ -97,6 +104,7 @@ In diesem Schritt richtest du das Portfolio als Web Service auf Render ein. Rend
 Aktuell nicht benötigt für Portfolio.
 
 **Falls später notwendig:**
+
 1. Scrolle zu **"Environment Variables"**
 2. Klicke **"Add Environment Variable"**
 3. Beispiel:
@@ -112,9 +120,11 @@ Aktuell nicht benötigt für Portfolio.
 ### 5.1 Deploy-Prozess beobachten
 
 **Live Logs anzeigen:**
+
 - Dashboard → Dein Service → **"Logs"** Tab
 
 **Erwartete Schritte:**
+
 1. ✅ Cloning repository
 2. ✅ Building Docker image
    - Build Stage (Node.js, pnpm install, ng build)
@@ -124,12 +134,14 @@ Aktuell nicht benötigt für Portfolio.
 5. ✅ **Deploy live** 🎉
 
 **Erwartete Zeit:**
+
 - Erster Deploy: ~2-3 Minuten
 - Folgende Deploys: ~1-2 Minuten (mit Cache)
 
 ### 5.2 Deployment URL
 
 Nach erfolgreichem Deploy:
+
 - **URL:** `https://portfolio-[random].onrender.com`
 - Oder Custom Domain (siehe unten)
 
@@ -148,6 +160,7 @@ Nach erfolgreichem Deploy:
 ### 6.2 Deploy Hook URL kopieren
 
 **URL Format:**
+
 ```
 https://api.render.com/deploy/srv-xxxxxxxxxxxxx?key=yyyyyyyyyyy
 ```
@@ -177,6 +190,7 @@ https://api.render.com/deploy/srv-xxxxxxxxxxxxx?key=yyyyyyyyyyy
 **Bei deinem Domain-Provider:**
 
 **Für Subdomain (empfohlen):**
+
 ```
 Type: CNAME
 Name: portfolio
@@ -184,6 +198,7 @@ Value: [dein-service].onrender.com
 ```
 
 **Für Root Domain:**
+
 ```
 Type: A
 Name: @
@@ -201,11 +216,13 @@ Value: [Render IP - siehe Dashboard]
 ### 8.1 Logs anzeigen
 
 **Live Logs:**
+
 1. Dashboard → Dein Service
 2. **"Logs"** Tab
 3. **"Live"** für Echtzeit
 
 **Filteroptionen:**
+
 - Last 10 minutes
 - Last hour
 - Last 24 hours
@@ -214,6 +231,7 @@ Value: [Render IP - siehe Dashboard]
 ### 8.2 Metrics (Starter Tier+)
 
 **Verfügbar ab Starter Plan:**
+
 - CPU Usage
 - Memory Usage
 - Request Count
@@ -222,6 +240,7 @@ Value: [Render IP - siehe Dashboard]
 ### 8.3 Events
 
 **Deploy Events:**
+
 1. Dashboard → Dein Service
 2. **"Events"** Tab
 3. Alle Deploys mit:
@@ -235,16 +254,19 @@ Value: [Render IP - siehe Dashboard]
 ### Fehler 1: Build Failed
 
 **Symptom:**
+
 ```
 Error: failed to solve: failed to compute cache key
 ```
 
 **Ursachen:**
+
 - Dockerfile-Syntax Fehler
 - Fehlende Dateien (package.json, pnpm-lock.yaml)
 - .dockerignore blockt wichtige Dateien
 
 **Lösung:**
+
 1. Lokalen Test: `pnpm run local:deploy`
 2. Logs in Render prüfen
 3. Dockerfile-Pfad checken
@@ -252,16 +274,19 @@ Error: failed to solve: failed to compute cache key
 ### Fehler 2: Health Check Failed
 
 **Symptom:**
+
 ```
 Health check failed at /health
 ```
 
 **Ursachen:**
+
 - Nginx nicht gestartet
 - nginx.conf fehlerhaft
 - Port 80 nicht exposed
 
 **Lösung:**
+
 1. Prüfe Dockerfile: `EXPOSE 80`
 2. Prüfe nginx.conf: `/health` Endpoint vorhanden
 3. Lokal testen: `curl http://localhost:8080/health`
@@ -269,16 +294,19 @@ Health check failed at /health
 ### Fehler 3: Container Exit Code 1
 
 **Symptom:**
+
 ```
 Container exited with code 1
 ```
 
 **Ursachen:**
+
 - Build-Fehler
 - Angular Build fehlgeschlagen
 - Dependencies fehlen
 
 **Lösung:**
+
 1. Logs prüfen für spezifische Errors
 2. Lokal bauen: `pnpm run ci:full-test`
 3. Node/pnpm Version checken
@@ -286,14 +314,17 @@ Container exited with code 1
 ### Fehler 4: Service Sleeps (Free Tier)
 
 **Symptom:**
+
 - Service schläft nach 15 Minuten Inaktivität
 - Erste Anfrage nach Sleep dauert 30+ Sekunden
 
 **Nicht wirklich ein Fehler:**
+
 - Free Tier Limitation
 - Kein Fix außer Upgrade zu Starter Plan
 
 **Workaround:**
+
 - Uptime-Monitor (z.B. UptimeRobot)
 - Pings alle 10 Minuten
 - Hält Service wach
@@ -301,6 +332,7 @@ Container exited with code 1
 ## Kosten
 
 ### Free Tier
+
 - **Preis:** $0/Monat
 - **Limitations:**
   - 750 Stunden/Monat (genug für 1 Service)
@@ -309,6 +341,7 @@ Container exited with code 1
 - **Perfekt für:** Portfolio, Demos
 
 ### Starter Tier
+
 - **Preis:** $7/Monat
 - **Benefits:**
   - Kein Sleep
@@ -346,6 +379,7 @@ git push origin main
 ```
 
 **Erwartetes Verhalten:**
+
 1. GitHub Actions Workflow startet
 2. Build & Tests laufen
 3. Deploy Hook wird getriggert
@@ -362,6 +396,7 @@ git push origin main
 ## Zusammenfassung
 
 **Was wurde eingerichtet:**
+
 - ✅ Web Service auf Render
 - ✅ Docker Runtime
 - ✅ Auto-Deploy von `main` Branch
@@ -370,6 +405,7 @@ git push origin main
 - ✅ Free Tier Hosting
 
 **Was kommt als Nächstes:**
+
 - Test Push auf `main`
 - GitHub Actions Workflow validieren
 - Optional: Custom Domain
