@@ -10,7 +10,7 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './contact.scss',
 })
 export class Contact {
-  readonly email = 'adem.dokur@example.com';
+  readonly email = 'kontakt@ademdokur.dev';
   readonly github = 'https://github.com/Ademdkr';
 
   openEmail(): void {

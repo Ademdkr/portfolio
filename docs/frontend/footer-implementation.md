@@ -51,7 +51,7 @@ export class Footer {
   readonly githubUrl = 'https://github.com/Ademdkr';
 
   // E-Mail Adresse
-  readonly email = 'mail@example.com';
+  readonly email = 'kontakt@ademdokur.dev';
 }
 ```
 

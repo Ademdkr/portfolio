@@ -71,7 +71,7 @@ export class IssueTracker {
       'Angular Material',
     ],
     links: {
-      demo: 'https://issue-tracker-demo.example.com',
+      demo: 'https://issue-tracker.ademdokur.dev',
       repository: 'https://github.com/Ademdkr/issue-tracker',
     },
   };

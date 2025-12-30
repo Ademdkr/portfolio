@@ -11,5 +11,5 @@ export class Footer {
   readonly currentYear = new Date().getFullYear();
   readonly name = 'Adem Dokur';
   readonly githubUrl = 'https://github.com/Ademdkr';
-  readonly email = 'mail@example.com';
+  readonly email = 'kontakt@ademdokur.dev';
 }

@@ -37,7 +37,7 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './contact.scss',
 })
 export class Contact {
-  readonly email = 'adem.dokur@example.com';
+  readonly email = 'kontakt@ademdokur.dev';
   readonly github = 'https://github.com/Ademdkr';
 
   openEmail(): void {
@@ -625,7 +625,7 @@ Footer kann E-Mail und GitHub-Links enthalten:
 ```html
 <footer>
   <div class="footer-links">
-    <a href="mailto:adem.dokur@example.com">E-Mail</a>
+    <a href="mailto:kontakt@ademdokur.dev">E-Mail</a>
     <a href="https://github.com/Ademdkr" target="_blank">GitHub</a>
   </div>
 </footer>

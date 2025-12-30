@@ -40,12 +40,11 @@ export class Projects {
         'PostgreSQL',
         'Prisma ORM',
         'JWT',
-        'Passport',
         'Nx Monorepo',
       ],
       status: 'fertig',
       links: {
-        demo: 'https://issue-tracker-demo.example.com',
+        demo: 'https://issue-tracker.ademdokur.dev',
         github: 'https://github.com/Ademdkr/issue-tracker',
         details: '/projects/issue-tracker',
       },
@@ -68,7 +67,7 @@ export class Projects {
       ],
       status: 'fertig',
       links: {
-        demo: 'https://budget-tracker-demo.example.com',
+        demo: 'https://budget-tracker.ademdokur.dev',
         github: 'https://github.com/Ademdkr/budget-tracker',
         details: '/projects/budget-tracker',
       },
@@ -80,7 +79,7 @@ export class Projects {
       type: 'E-Commerce Platform',
       description:
         'Vollständige E-Commerce-Lösung mit Produktverwaltung, Warenkorb, Checkout und Zahlungsintegration.',
-      techStack: ['Angular', 'NestJS', 'PostgreSQL', 'Stripe', 'Redis'],
+      techStack: ['Angular', 'NestJS', 'PostgreSQL',],
       status: 'in Arbeit',
       links: {
         details: '/projects/mini-shop',

@@ -25,24 +25,24 @@ interface WorkingPrinciple {
 export class About {
   readonly journey: TimelineStep[] = [
     {
-      year: '2023',
-      title: 'Umschulung zum Fachinformatiker',
+      year: '2022',
+      title: 'Einstieg in die Web-Entwicklung',
       description:
-        'Start der Umschulung mit Fokus auf Anwendungsentwicklung. Grundlagen in Java, Datenbanken und Softwareentwicklung.',
+        'Beginn der Auseinandersetzung mit den Grundlagen der Web-Entwicklung: HTML, CSS und JavaScript als Fundament für die weitere berufliche Entwicklung.',
+      icon: 'lightbulb',
+    },
+    {
+      year: '2023 - 07/2025',
+      title: 'Ausbildung zum Fachinformatiker',
+      description:
+        'Umschulung zum Fachinformatiker für Anwendungsentwicklung beim Bildungsträger bfw. Verknüpfung von theoretischer Ausbildung mit praktischer Erfahrung durch sechsmonatige Praxisphase.',
       icon: 'school',
     },
     {
-      year: '2024',
-      title: 'Vertiefung Full-Stack Entwicklung',
+      year: 'Seit 10/2025',
+      title: 'Praxisprojekte & Weiterentwicklung',
       description:
-        'Intensive Beschäftigung mit modernen Web-Technologien: Angular, NestJS, TypeScript, PostgreSQL und MongoDB.',
-      icon: 'code',
-    },
-    {
-      year: '2024-2025',
-      title: 'Praxisprojekte & Portfolio',
-      description:
-        'Entwicklung eigener Full-Stack Projekte (Issue-Tracker, Budget-Tracker) zur Anwendung und Vertiefung der erlernten Skills.',
+        'Eigenständige Entwicklung vollständiger Full-Stack-Anwendungen zur praktischen Umsetzung und Vertiefung der erworbenen Fachkenntnisse in modernen Web-Technologien.',
       icon: 'rocket_launch',
     },
   ];
@@ -51,22 +51,25 @@ export class About {
     {
       icon: 'auto_awesome',
       title: 'Clean Code',
-      description: 'Lesbarer, wartbarer Code mit klarer Struktur und Dokumentation',
+      description: 'Lesbarer und wartbarer Code mit klarer Struktur und umfassender Dokumentation',
     },
     {
       icon: 'layers',
       title: 'Best Practices',
-      description: 'Moderne Patterns, TypeScript, Type Safety und saubere Architektur',
+      description:
+        'Anwendung moderner Design Patterns, konsequente Typisierung und saubere Architektur',
     },
     {
       icon: 'psychology',
       title: 'Problemlösung',
-      description: 'Systematisches Debugging, Recherche und kontinuierliches Lernen',
+      description:
+        'Strukturierte Fehleranalyse, fundierte Recherche und kontinuierliche Weiterbildung',
     },
     {
       icon: 'groups',
-      title: 'Teamwork',
-      description: 'Code Reviews, Dokumentation und klare Kommunikation',
+      title: 'Zusammenarbeit',
+      description:
+        'Konstruktive Code-Reviews, aussagekräftige Dokumentation und präzise Kommunikation',
     },
   ];
 
