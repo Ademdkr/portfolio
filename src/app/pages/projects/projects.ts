@@ -34,19 +34,12 @@ export class Projects {
       type: 'Full-Stack Web App',
       description:
         'Monorepo-basiertes Issue-Management-System mit JWT-Authentication, RBAC und Policy-basierter Authorization. Nx Monorepo mit shared-types Library für Type-Safety zwischen Frontend und Backend.',
-      techStack: [
-        'Angular 20',
-        'NestJS 11',
-        'PostgreSQL',
-        'Prisma ORM',
-        'JWT',
-        'Nx Monorepo',
-      ],
+      techStack: ['Angular 20', 'NestJS 11', 'PostgreSQL', 'Prisma ORM', 'JWT', 'Nx Monorepo'],
       status: 'fertig',
       links: {
         demo: 'https://issue-tracker.ademdokur.dev',
         github: 'https://github.com/Ademdkr/issue-tracker',
-        details: '/projects/issue-tracker',
+        details: '/projekte/issue-tracker',
       },
       featured: true,
     },
@@ -69,7 +62,7 @@ export class Projects {
       links: {
         demo: 'https://budget-tracker.ademdokur.dev',
         github: 'https://github.com/Ademdkr/budget-tracker',
-        details: '/projects/budget-tracker',
+        details: '/projekte/budget-tracker',
       },
       featured: true,
     },
@@ -79,10 +72,10 @@ export class Projects {
       type: 'E-Commerce Platform',
       description:
         'Vollständige E-Commerce-Lösung mit Produktverwaltung, Warenkorb, Checkout und Zahlungsintegration.',
-      techStack: ['Angular', 'NestJS', 'PostgreSQL',],
+      techStack: ['Angular', 'NestJS', 'PostgreSQL'],
       status: 'in Arbeit',
       links: {
-        details: '/projects/mini-shop',
+        details: '/projekte/mini-shop',
       },
     },
     /*     {
