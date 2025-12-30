@@ -40,7 +40,7 @@ export class Landing {
         'Monorepo-basiertes Issue-Management-System mit JWT-Authentication, RBAC und Policy-basierter Authorization.',
       techStack: ['Angular 20', 'NestJS 11', 'PostgreSQL', 'Prisma ORM', 'Nx Monorepo'],
       liveUrl: 'https://issue-tracker.ademdokur.dev',
-      detailsUrl: '/projects/issue-tracker',
+      detailsUrl: '/projekte/issue-tracker',
     },
     {
       title: 'Budget-Tracker',
@@ -48,7 +48,7 @@ export class Landing {
         'Full-Stack-Webanwendung zur Verwaltung persönlicher Finanzen mit Chart.js Visualisierungen.',
       techStack: ['Angular 18', 'NestJS 10', 'PostgreSQL', 'Prisma ORM', 'Chart.js'],
       liveUrl: 'https://budget-tracker.ademdokur.dev',
-      detailsUrl: '/projects/budget-tracker',
+      detailsUrl: '/projekte/budget-tracker',
     },
   ];
 

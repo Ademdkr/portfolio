@@ -10,7 +10,7 @@ import { Contact } from './pages/contact/contact';
 export const routes: Routes = [
   { path: '', component: Landing },
   {
-    path: 'projects',
+    path: 'projekte',
     children: [
       { path: '', component: Projects },
       { path: 'issue-tracker', component: IssueTracker },
