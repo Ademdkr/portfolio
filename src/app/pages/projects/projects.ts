@@ -74,9 +74,7 @@ export class Projects {
         'Vollständige E-Commerce-Lösung mit Produktverwaltung, Warenkorb, Checkout und Zahlungsintegration.',
       techStack: ['Angular', 'NestJS', 'PostgreSQL'],
       status: 'in Arbeit',
-      links: {
-        details: '/projekte/mini-shop',
-      },
+      links: {},
     },
     /*     {
       id: 'wiki',
