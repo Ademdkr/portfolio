@@ -76,7 +76,7 @@ export class Landing {
     {
       title: 'E-Commerce Platform',
       description: 'Vollständige E-Commerce-Lösung mit Produktverwaltung, Warenkorb und Checkout.',
-      techStack: ['Angular', 'NestJS', 'PostgreSQL', 'Stripe'],
+      techStack: ['Angular', 'NestJS', 'PostgreSQL'],
       liveUrl: 'https://demo.example.com',
       detailsUrl: '/projekte',
     },

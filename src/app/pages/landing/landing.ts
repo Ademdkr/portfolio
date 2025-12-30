@@ -37,17 +37,17 @@ export class Landing {
     {
       title: 'Issue-Tracker',
       description:
-        'Kollaboratives Tool zur Verwaltung und Nachverfolgung von Aufgaben, Bugs und Features.',
-      techStack: ['Angular', 'NestJS', 'PostgreSQL', 'JWT'],
-      liveUrl: 'https://issue-tracker-demo.example.com',
+        'Monorepo-basiertes Issue-Management-System mit JWT-Authentication, RBAC und Policy-basierter Authorization.',
+      techStack: ['Angular 20', 'NestJS 11', 'PostgreSQL', 'Prisma ORM', 'Nx Monorepo'],
+      liveUrl: 'https://issue-tracker.ademdokur.dev',
       detailsUrl: '/projects/issue-tracker',
     },
     {
       title: 'Budget-Tracker',
       description:
-        'Persönliches Finanzmanagement-Tool mit visuellen Dashboards und Kategorisierung.',
-      techStack: ['Angular', 'NestJS', 'MongoDB', 'Chart.js'],
-      liveUrl: 'https://budget-tracker-demo.example.com',
+        'Full-Stack-Webanwendung zur Verwaltung persönlicher Finanzen mit Chart.js Visualisierungen.',
+      techStack: ['Angular 18', 'NestJS 10', 'PostgreSQL', 'Prisma ORM', 'Chart.js'],
+      liveUrl: 'https://budget-tracker.ademdokur.dev',
       detailsUrl: '/projects/budget-tracker',
     },
   ];
@@ -55,19 +55,19 @@ export class Landing {
   readonly skillCategories: SkillCategory[] = [
     {
       title: 'Frontend',
-      skills: ['Angular', 'TypeScript', 'RxJS', 'SCSS'],
+      skills: ['Angular', 'TypeScript', 'RxJS', 'Angular Material', 'HTML5 & CSS3', 'SCSS'],
     },
     {
       title: 'Backend',
-      skills: ['NestJS', 'Node.js', 'REST API', 'GraphQL'],
+      skills: ['NestJS', 'Node.js', 'REST API', 'JWT Authentication'],
     },
     {
       title: 'Datenbanken',
-      skills: ['PostgreSQL', 'MongoDB', 'Redis'],
+      skills: ['PostgreSQL', 'Prisma', 'SQL'],
     },
     {
-      title: 'Tools',
-      skills: ['Git', 'Docker', 'VS Code', 'Postman'],
+      title: 'DevOps',
+      skills: ['Git & GitHub', 'Docker', 'Nx Monorepo', 'Nginx'],
     },
   ];
 }

@@ -117,7 +117,7 @@ export class Projects {
       techStack: ['Angular', 'NestJS', 'PostgreSQL', 'TypeORM', 'JWT'],
       status: 'fertig',
       links: {
-        demo: 'https://issue-tracker-demo.example.com',
+        demo: 'https://issue-tracker.ademdokur.dev',
         github: 'https://github.com/Ademdkr/issue-tracker',
         details: '/projects/issue-tracker',
       },
@@ -132,7 +132,7 @@ export class Projects {
       techStack: ['Angular', 'NestJS', 'MongoDB', 'Mongoose', 'Chart.js'],
       status: 'fertig',
       links: {
-        demo: 'https://budget-tracker-demo.example.com',
+        demo: 'https://budget-tracker.ademdokur.dev',
         github: 'https://github.com/Ademdkr/budget-tracker',
         details: '/projects/budget-tracker',
       },
@@ -143,7 +143,7 @@ export class Projects {
       name: 'Mini-Shop',
       type: 'E-Commerce Platform',
       description: 'E-Commerce-Lösung mit Produktverwaltung, Warenkorb und Checkout.',
-      techStack: ['Angular', 'NestJS', 'PostgreSQL', 'Stripe', 'Redis'],
+      techStack: ['Angular', 'NestJS', 'PostgreSQL', 'Redis'],
       status: 'in Arbeit',
       links: {
         details: '/projects/mini-shop',

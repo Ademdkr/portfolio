@@ -77,7 +77,7 @@ readonly project = {
   shortDescription: 'Kollaboratives Tool zur Verwaltung und Nachverfolgung von Aufgaben, Bugs und Features',
   techStack: ['Angular 21', 'NestJS', 'PostgreSQL', 'TypeORM', 'JWT', 'RxJS', 'Angular Material'],
   links: {
-    demo: 'https://issue-tracker-demo.example.com',
+    demo: 'https://issue-tracker.ademdokur.dev',
     frontendRepo: 'https://github.com/Ademdkr/issue-tracker-frontend',
     backendRepo: 'https://github.com/Ademdkr/issue-tracker-backend',
   },
@@ -910,7 +910,7 @@ export class IssueTracker {
       'Kollaboratives Tool zur Verwaltung und Nachverfolgung von Aufgaben, Bugs und Features',
     techStack: ['Angular 21', 'NestJS', 'PostgreSQL', 'TypeORM', 'JWT', 'RxJS', 'Angular Material'],
     links: {
-      demo: 'https://issue-tracker-demo.example.com',
+      demo: 'https://issue-tracker.ademdokur.dev',
       frontendRepo: 'https://github.com/Ademdkr/issue-tracker-frontend',
       backendRepo: 'https://github.com/Ademdkr/issue-tracker-backend',
     },

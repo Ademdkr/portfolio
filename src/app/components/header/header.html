@@ -1,30 +1,32 @@
-<mat-toolbar class="header">
-  <div class="header-container">
-    <a routerLink="/" class="logo">ademdokur.dev</a>
+<header role="banner">
+  <mat-toolbar class="header">
+    <div class="header-container">
+      <a routerLink="/" class="logo" aria-label="Zur Startseite">ademdokur.dev</a>
 
-    <nav class="nav-links">
-      @for (item of navItems; track item.label) {
+      <nav class="nav-links" role="navigation" aria-label="Hauptnavigation">
+        @for (item of navItems; track item.label) {
+        <a
+          mat-button
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+          class="nav-button"
+        >
+          {{ item.label }}
+        </a>
+        }
+      </nav>
+
       <a
-        mat-button
-        [routerLink]="item.route"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: item.route === '/' }"
-        class="nav-button"
+        [href]="githubUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        mat-icon-button
+        class="github-button"
+        aria-label="GitHub Profil besuchen"
       >
-        {{ item.label }}
+        <mat-icon>code</mat-icon>
       </a>
-      }
-    </nav>
-
-    <a
-      [href]="githubUrl"
-      target="_blank"
-      rel="noopener noreferrer"
-      mat-icon-button
-      class="github-button"
-      aria-label="GitHub"
-    >
-      <mat-icon>code</mat-icon>
-    </a>
-  </div>
-</mat-toolbar>
+    </div>
+  </mat-toolbar>
+</header>
