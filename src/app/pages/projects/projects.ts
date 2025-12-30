@@ -15,7 +15,7 @@ interface Project {
   links: {
     demo?: string;
     github?: string;
-    details: string;
+    details?: string;
   };
   featured?: boolean;
 }
