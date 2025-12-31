@@ -1,0 +1,27 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3f51b5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#536dfe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#gradient)"/>
+
+  <!-- Letter A -->
+  <path d="M 180 360 L 220 240 L 240 240 L 280 360 L 260 360 L 252 335 L 208 335 L 200 360 Z M 215 318 L 245 318 L 230 270 Z"
+        fill="white"
+        stroke="white"
+        stroke-width="2"/>
+
+  <!-- Letter D -->
+  <path d="M 290 240 L 320 240 Q 350 240 365 255 Q 380 270 380 300 Q 380 330 365 345 Q 350 360 320 360 L 290 360 Z M 310 258 L 310 342 L 318 342 Q 338 342 350 332 Q 362 322 362 300 Q 362 278 350 268 Q 338 258 318 258 Z"
+        fill="white"
+        stroke="white"
+        stroke-width="2"/>
+
+  <!-- Code Brackets decoration -->
+  <text x="140" y="190" font-family="monospace" font-size="48" fill="white" opacity="0.3">&lt;/&gt;</text>
+  <text x="330" y="420" font-family="monospace" font-size="48" fill="white" opacity="0.3">&lt;/&gt;</text>
+</svg>
