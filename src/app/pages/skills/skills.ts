@@ -24,6 +24,44 @@ interface SkillCategory {
 export class Skills {
   readonly skillCategories: SkillCategory[] = [
     {
+      title: 'IT-Administration',
+      icon: 'dns',
+      description: 'Betrieb und Weiterentwicklung der On-Prem-Umgebung',
+      skills: [
+        { name: 'Netzwerkadministration', level: 'advanced' },
+        { name: 'NixOS', level: 'advanced' },
+        { name: 'Debian / Ubuntu', level: 'advanced' },
+        { name: 'Backupstrategien', level: 'advanced' },
+        { name: 'Reverse Proxy', level: 'advanced' },
+        { name: 'Collaboration-Software', level: 'advanced' },
+        { name: 'Passwortmanagement', level: 'advanced' },
+        { name: 'Dokumentationssoftware', level: 'advanced' },
+        { name: 'Interner Support', level: 'advanced' },
+      ],
+    },
+    {
+      title: 'SAP-Basis',
+      icon: 'settings_suggest',
+      description: 'Einrichtung und Betrieb von SAP-Entwicklungssystemen',
+      skills: [
+        { name: 'S/4HANA 2025', level: 'advanced' },
+        { name: 'Rollen & Berechtigungen', level: 'advanced' },
+        { name: 'Fiori-Installation & -Aktivierung', level: 'advanced' },
+        { name: 'Fiori-App-Aktivierung', level: 'advanced' },
+      ],
+    },
+    {
+      title: 'SAP-Entwicklung',
+      icon: 'code',
+      description: 'Anwendungen und Schnittstellen im SAP-Umfeld',
+      skills: [
+        { name: 'ABAP', level: 'advanced' },
+        { name: 'Fiori-App-Anpassung (UI5)', level: 'advanced' },
+        { name: 'Web Dynpro', level: 'intermediate' },
+        { name: 'OData-Services', level: 'advanced' },
+      ],
+    },
+    {
       title: 'Frontend',
       icon: 'web',
       description: 'Moderne Web-Entwicklung mit Angular und TypeScript',
@@ -32,7 +70,7 @@ export class Skills {
         { name: 'TypeScript', level: 'advanced' },
         { name: 'RxJS', level: 'advanced' },
         { name: 'Angular Material', level: 'advanced' },
-        { name: 'HTML5 & CSS3', level: 'expert' },
+        { name: 'HTML5 & CSS3', level: 'advanced' },
         { name: 'SCSS/SASS', level: 'advanced' },
         { name: 'Responsive Design', level: 'advanced' },
       ],
@@ -44,7 +82,7 @@ export class Skills {
       skills: [
         { name: 'NestJS', level: 'advanced' },
         { name: 'Node.js', level: 'advanced' },
-        { name: 'REST API', level: 'expert' },
+        { name: 'REST API', level: 'advanced' },
         { name: 'JWT Authentication', level: 'advanced' },
         { name: 'Cloudflare Workers', level: 'intermediate' },
       ],
@@ -62,7 +100,7 @@ export class Skills {
       ],
     },
     {
-      title: 'DevOps & Tools',
+      title: 'Entwicklungswerkzeuge & Deployment',
       icon: 'build',
       description: 'Entwicklungswerkzeuge und Deployment',
       skills: [
@@ -83,7 +121,6 @@ export class Skills {
       description: 'Architektur-Patterns und Entwicklungsstandards',
       skills: [
         { name: 'Clean Code', level: 'advanced' },
-        { name: 'REST API Design', level: 'expert' },
         { name: 'Standalone Components', level: 'advanced' },
         { name: 'Dependency Injection', level: 'advanced' },
         { name: 'Policy-basierte Authorization', level: 'intermediate' },

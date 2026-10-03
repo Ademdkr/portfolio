@@ -27,7 +27,7 @@
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
 }
@@ -35,7 +35,9 @@
 .category-card {
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-4px);
@@ -129,8 +131,8 @@
     letter-spacing: 0.5px;
 
     &.expert {
-      background: var(--color-primary-600);
-      color: white;
+      background: var(--color-primary-hover);
+      color: var(--color-primary-hover-text);
     }
 
     &.advanced {
@@ -175,14 +177,14 @@
       h3 {
         font-size: 1.25rem;
         font-weight: 600;
-        color: #333;
+        color: var(--text-primary);
         margin: 0 0 0.75rem 0;
       }
 
       p {
         font-size: 1rem;
         line-height: 1.7;
-        color: #555;
+        color: var(--text-secondary);
         margin: 0;
       }
     }
