@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+import { LucideCodeXml, LucideMail } from '@lucide/angular';
 
 @Component({
   selector: 'app-footer',
-  imports: [MatIconModule],
+  imports: [LucideCodeXml, LucideMail],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })

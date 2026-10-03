@@ -8,12 +8,13 @@
   <section class="about-hero">
     <div class="hero-content">
       <p class="intro">
-        Mein Name ist <strong>Adem Dokur</strong> – Fachinformatiker für Anwendungsentwicklung mit
-        Spezialisierung auf <strong>Full-Stack-Webentwicklung</strong>.
+        Ich bin <strong>Adem Dokur</strong>, IT-Administrator und Anwendungsentwickler bei der
+        rimpido GmbH. Meine Arbeit verbindet <strong>IT-Infrastruktur</strong>,
+        <strong>SAP-Basis</strong> und <strong>Softwareentwicklung</strong>.
       </p>
       <p class="tagline">
-        Mit abgeschlossener Ausbildung und praxisorientierten Projekten bereit für den
-        professionellen Einsatz moderner Web-Technologien.
+        Ausgebildeter Fachinformatiker für Anwendungsentwicklung, im Berufsalltag zwischen Betrieb,
+        Basis und Entwicklung.
       </p>
     </div>
   </section>
@@ -23,16 +24,32 @@
     <h2>Mein Weg</h2>
     <div class="timeline">
       @for (step of journey; track step.year) {
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <mat-icon>{{ step.icon }}</mat-icon>
+        <div class="timeline-item">
+          <div class="timeline-icon">
+            <mat-icon>{{ step.icon }}</mat-icon>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-year">{{ step.year }}</span>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.description }}</p>
+          </div>
         </div>
-        <div class="timeline-content">
-          <span class="timeline-year">{{ step.year }}</span>
-          <h3>{{ step.title }}</h3>
-          <p>{{ step.description }}</p>
-        </div>
-      </div>
+      }
+    </div>
+  </section>
+
+  <!-- Work Areas -->
+  <section class="working-principles">
+    <h2>Aufgaben bei der rimpido GmbH</h2>
+    <div class="principles-grid">
+      @for (area of workAreas; track area.title) {
+        <mat-card class="principle-card">
+          <div class="principle-icon">
+            <mat-icon>{{ area.icon }}</mat-icon>
+          </div>
+          <h3>{{ area.title }}</h3>
+          <p>{{ area.description }}</p>
+        </mat-card>
       }
     </div>
   </section>
@@ -42,13 +59,13 @@
     <h2>Arbeitsweise</h2>
     <div class="principles-grid">
       @for (principle of workingPrinciples; track principle.title) {
-      <mat-card class="principle-card">
-        <div class="principle-icon">
-          <mat-icon>{{ principle.icon }}</mat-icon>
-        </div>
-        <h3>{{ principle.title }}</h3>
-        <p>{{ principle.description }}</p>
-      </mat-card>
+        <mat-card class="principle-card">
+          <div class="principle-icon">
+            <mat-icon>{{ principle.icon }}</mat-icon>
+          </div>
+          <h3>{{ principle.title }}</h3>
+          <p>{{ principle.description }}</p>
+        </mat-card>
       }
     </div>
   </section>
@@ -58,7 +75,7 @@
     <h2>Technische Interessen</h2>
     <mat-chip-set class="interests-chips">
       @for (interest of technicalInterests; track interest) {
-      <mat-chip>{{ interest }}</mat-chip>
+        <mat-chip>{{ interest }}</mat-chip>
       }
     </mat-chip-set>
   </section>
@@ -70,12 +87,11 @@
         <div class="goal-content">
           <mat-icon>flag</mat-icon>
           <div class="goal-text">
-            <h3>Berufliches Ziel</h3>
+            <h3>Schwerpunkte</h3>
             <p>
-              Ich suche eine <strong>Junior Full-Stack Developer Position</strong>, in der ich meine
-              Kenntnisse in einem professionellen Team einbringen und kontinuierlich erweitern kann.
-              Mein besonderes Interesse gilt modernen Webtechnologien sowie der Entwicklung
-              wartbarer und skalierbarer Anwendungen.
+              Mein Schwerpunkt liegt auf stabilen, nachvollziehbar betriebenen Systemen und
+              Anwendungen: von der On-Prem-Infrastruktur über die SAP-Basis bis zur Anwendung, die
+              darauf läuft. Privat vertiefe ich moderne Webtechnologien in eigenen Projekten.
             </p>
           </div>
         </div>

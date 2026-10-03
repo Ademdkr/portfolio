@@ -39,11 +39,39 @@ export class About {
       icon: 'school',
     },
     {
-      year: 'Seit 10/2025',
+      year: '10/2025 - 02/2026',
       title: 'Praxisprojekte & Weiterentwicklung',
       description:
         'Eigenständige Entwicklung vollständiger Full-Stack-Anwendungen zur praktischen Umsetzung und Vertiefung der erworbenen Fachkenntnisse in modernen Web-Technologien.',
       icon: 'rocket_launch',
+    },
+    {
+      year: 'Seit 03/2026',
+      title: 'IT-Administrator & Anwendungsentwickler',
+      description:
+        'Tätig bei der rimpido GmbH, einem SAP-Beratungsunternehmen. Verantwortung für interne IT, Netzwerk, SAP-Basis sowie die Anpassung von Fiori-Apps und Schnittstellen.',
+      icon: 'work',
+    },
+  ];
+
+  readonly workAreas: WorkingPrinciple[] = [
+    {
+      icon: 'dns',
+      title: 'IT-Administration',
+      description:
+        'Betrieb und Weiterentwicklung der internen On-Prem-Umgebung auf Basis freier Software, vor allem Linux. Dazu gehören Netzwerk, Backup-Konzepte, Dokumentation und Support für die Kolleginnen und Kollegen sowie die Einführung neuer Dienste.',
+    },
+    {
+      icon: 'settings_suggest',
+      title: 'SAP-Basis',
+      description:
+        'Selbständige Einrichtung von S/4HANA-2025-Entwicklungssystemen, Pflege von Rollen und Berechtigungen sowie Installation und Aktivierung von Fiori und Fiori-Apps inkl. Rollenzuweisung.',
+    },
+    {
+      icon: 'code',
+      title: 'Anwendungsentwicklung',
+      description:
+        'Anpassung von Fiori-Apps (UI5), Entwicklung in ABAP und Web Dynpro sowie Bereitstellung von OData-APIs für Dritt- und externe Systeme.',
     },
   ];
 
@@ -51,7 +79,8 @@ export class About {
     {
       icon: 'auto_awesome',
       title: 'Clean Code',
-      description: 'Lesbarer und wartbarer Code mit klarer Struktur und umfassender Dokumentation',
+      description:
+        'Lesbarer und wartbarer Code mit klarer Struktur und nachvollziehbarer Dokumentation',
     },
     {
       icon: 'layers',
@@ -69,18 +98,20 @@ export class About {
       icon: 'groups',
       title: 'Zusammenarbeit',
       description:
-        'Konstruktive Code-Reviews, aussagekräftige Dokumentation und präzise Kommunikation',
+        'Konstruktive Code-Reviews, verlässlicher Support für Kolleginnen und Kollegen und präzise Kommunikation',
     },
   ];
 
   readonly technicalInterests: string[] = [
-    'Full-Stack Entwicklung',
-    'REST API Design',
-    'TypeScript & Type Safety',
+    'IT-Infrastruktur & Netzwerk',
+    'Linux (NixOS, Debian/Ubuntu)',
+    'Self-Hosting & Open Source',
+    'SAP-Basis',
+    'SAP Fiori & UI5',
+    'ABAP & OData',
     'Angular & RxJS',
     'NestJS & Node.js',
-    'Datenbank-Design',
+    'TypeScript & Type Safety',
     'Clean Architecture',
-    'DevOps & Docker',
   ];
 }

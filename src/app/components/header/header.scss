@@ -2,8 +2,9 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: white;
+  background: var(--surface-card);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: visible;
 }
 
 .header-container {
@@ -32,6 +33,14 @@
 }
 
 .nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 4px;
+  color: var(--text-primary);
+  text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 
@@ -46,7 +55,15 @@
 }
 
 .github-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
   color: var(--text-primary);
+  text-decoration: none;
   transition: color 0.3s ease;
 
   &:hover {
@@ -54,28 +71,97 @@
   }
 }
 
+.mobile-menu-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-primary-600);
+    background: var(--color-primary-100);
+  }
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-primary-600);
+    background: var(--color-primary-100);
+  }
+}
+
 @media (max-width: 768px) {
   .header-container {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    padding: 0 12px;
   }
 
   .logo {
-    order: 1;
-  }
-
-  .github-button {
-    order: 2;
+    font-size: 1.25rem;
+    white-space: nowrap;
   }
 
   .nav-links {
-    order: 3;
-    width: 100%;
-    justify-content: space-around;
-    margin-top: 8px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    margin: 0;
+    padding: 8px 16px 16px;
+    background: var(--surface-card);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+
+    &.mobile-open {
+      display: flex;
+    }
   }
 
   .nav-button {
-    font-size: 0.875rem;
-    padding: 0 8px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .github-button {
+    margin-left: auto;
+  }
+
+  .mobile-menu-button {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .github-button {
+    display: none;
+  }
+
+  .logo {
+    font-size: 1.1rem;
   }
 }

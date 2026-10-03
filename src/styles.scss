@@ -1,9 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$portfolio-theme: mat.m2-define-light-theme(
+  (
+    color: (
+      primary: mat.m2-define-palette(mat.$m2-indigo-palette),
+      accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400),
+      warn: mat.m2-define-palette(mat.$m2-red-palette),
+    ),
+    typography: mat.m2-define-typography-config(
+        $font-family: 'Roboto, "Helvetica Neue", sans-serif',
+      ),
+    density: 0,
+  )
+);
+
+@include mat.core-theme($portfolio-theme);
+@include mat.button-theme($portfolio-theme);
+@include mat.toolbar-theme($portfolio-theme);
+@include mat.icon-theme($portfolio-theme);
+@include mat.card-theme($portfolio-theme);
+@include mat.chips-theme($portfolio-theme);
+@include mat.divider-theme($portfolio-theme);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 // CSS Variables for Custom Color Scheme
 :root {
+  color-scheme: light;
+
   // Primary Colors (Indigo)
   --color-primary-50: #eef2ff;
   --color-primary-100: #e0e7ff;
@@ -15,6 +47,8 @@
   --color-primary-700: #4338ca;
   --color-primary-800: #3730a3;
   --color-primary-900: #312e81;
+  --color-primary-hover: #4f46e5;
+  --color-primary-hover-text: #ffffff;
 
   // Accent Colors (Amber)
   --color-accent-500: #f59e0b;
@@ -50,6 +84,11 @@
   // Background Colors
   --bg-primary: #ffffff;
   --bg-secondary: var(--color-gray-50);
+  --surface-card: #ffffff;
+  --cta-primary-bg: #ffffff;
+  --cta-primary-text: #4338ca;
+  --cta-primary-hover-bg: #eef2ff;
+  --cta-primary-hover-text: #4338ca;
 
   // Border Colors
   --border-primary: var(--color-gray-200);
@@ -79,13 +118,123 @@
   --mdc-theme-on-secondary: #ffffff;
 }
 
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-primary-50: #222137;
+  --color-primary-100: #302e4d;
+  --color-primary-200: #46436d;
+  --color-primary-300: #625e99;
+  --color-primary-400: #817cf0;
+  --color-primary-500: #9692f5;
+  --color-primary-600: #aaa7ff;
+  --color-primary-700: #c5c3ff;
+  --color-primary-800: #dcdbff;
+  --color-primary-900: #eeeeff;
+  --color-primary-hover: #3e4282;
+  --color-primary-hover-text: #ffffff;
+
+  --color-gray-50: #191a20;
+  --color-gray-100: #22232b;
+  --color-gray-200: #30323c;
+  --color-gray-300: #424550;
+  --color-gray-400: #777c89;
+  --color-gray-500: #9ba0ad;
+  --color-gray-600: #b9bdc8;
+  --color-gray-700: #d0d3db;
+  --color-gray-800: #e3e5eb;
+  --color-gray-900: #f4f4f7;
+
+  --color-amber-50: #392c18;
+  --color-amber-100: #4c371a;
+  --color-amber-600: #fbbf24;
+  --color-amber-700: #fcd34d;
+  --color-amber-800: #fde68a;
+
+  --gradient-primary: linear-gradient(135deg, #4c50bd 0%, #3e429f 50%, #34387f 100%);
+  --gradient-subtle: linear-gradient(135deg, #222137 0%, #28283c 100%);
+
+  --text-primary: #f4f4f7;
+  --text-secondary: #b9bdc8;
+  --bg-primary: #14151a;
+  --bg-secondary: #1d1e25;
+  --surface-card: #252731;
+  --border-primary: #3b3e49;
+  --cta-primary-bg: #222137;
+  --cta-primary-text: #eeeeff;
+  --cta-primary-hover-bg: #302e4d;
+  --cta-primary-hover-text: #ffffff;
+
+  --mat-sys-primary: #aaa7ff;
+  --mat-sys-on-primary: #191825;
+  --mat-sys-primary-container: #302e4d;
+  --mat-sys-on-primary-container: #eeeeff;
+  --mat-sys-secondary: #fbbf24;
+  --mat-sys-on-secondary: #28200f;
+  --mat-sys-surface: #1d1e25;
+  --mat-sys-on-surface: #f4f4f7;
+
+  --mdc-theme-primary: #aaa7ff;
+  --mdc-theme-secondary: #fbbf24;
+  --mdc-theme-on-primary: #191825;
+  --mdc-theme-on-secondary: #28200f;
+}
+
 html,
 body {
   height: 100%;
 }
 
+html[data-theme='dark'] body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+html[data-theme='dark'] .mat-mdc-card {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+html[data-theme='dark'] .mat-toolbar {
+  color: var(--text-primary);
+}
+
+html[data-theme='dark'] .mat-divider {
+  border-top-color: var(--border-primary);
+}
+
+html[data-theme='dark'] .mat-mdc-chip {
+  color: var(--text-primary);
+}
+
+html[data-theme='dark'] .mat-mdc-chip .mat-mdc-chip-action-label {
+  color: var(--color-primary-700) !important;
+}
+
+html[data-theme='dark'] .mat-mdc-chip:hover .mat-mdc-chip-action-label {
+  color: var(--color-primary-hover-text) !important;
+}
+
+html[data-theme='dark'] .mat-mdc-button:not(.mat-primary):not([color]),
+html[data-theme='dark'] .mat-mdc-button:not(.mat-primary):not([color]) mat-icon {
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme='dark'] .mat-mdc-button:not(.mat-primary):not([color]):hover {
+  background-color: var(--color-gray-100) !important;
+}
+
 html {
   scrollbar-gutter: stable;
+}
+
+@media (max-width: 360px) {
+  h1,
+  h2,
+  h3,
+  p {
+    overflow-wrap: anywhere;
+  }
 }
 
 body {
@@ -93,6 +242,7 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 // Material Button Overrides - Comprehensive
@@ -143,12 +293,12 @@ body {
 .mat-mdc-outlined-button {
   &.mat-primary,
   &[color='primary'] {
-    --mdc-text-button-label-text-color: #4f46e5 !important;
-    --mdc-outlined-button-label-text-color: #4f46e5 !important;
-    color: #4f46e5 !important;
+    --mdc-text-button-label-text-color: var(--color-primary-600) !important;
+    --mdc-outlined-button-label-text-color: var(--color-primary-600) !important;
+    color: var(--color-primary-600) !important;
 
     &:hover:not([disabled]) {
-      background-color: #eef2ff !important;
+      background-color: var(--color-primary-100) !important;
     }
   }
 
@@ -166,14 +316,22 @@ body {
 
 // Material Card Enhancement
 .mat-mdc-card {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    0 4px 12px rgba(0, 0, 0, 0.05);
   border: 1px solid var(--color-gray-300);
   border-radius: 16px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-  background: white;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+  background: var(--surface-card);
+  color: var(--text-primary);
 
   &:hover {
-    box-shadow: 0 12px 28px rgba(79, 70, 229, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 12px 28px rgba(79, 70, 229, 0.12),
+      0 8px 16px rgba(0, 0, 0, 0.08);
     border-color: var(--color-primary-200);
     transform: translateY(-4px);
   }

@@ -3,17 +3,22 @@
     <div class="header-container">
       <a routerLink="/" class="logo" aria-label="Zur Startseite">ademdokur.dev</a>
 
-      <nav class="nav-links" role="navigation" aria-label="Hauptnavigation">
+      <nav
+        id="primary-navigation"
+        class="nav-links"
+        [class.mobile-open]="mobileMenuOpen()"
+        aria-label="Hauptnavigation"
+      >
         @for (item of navItems; track item.label) {
-        <a
-          mat-button
-          [routerLink]="item.route"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: item.route === '/' }"
-          class="nav-button"
-        >
-          {{ item.label }}
-        </a>
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+            class="nav-button"
+            (click)="closeMobileMenu()"
+          >
+            {{ item.label }}
+          </a>
         }
       </nav>
 
@@ -21,12 +26,41 @@
         [href]="githubUrl"
         target="_blank"
         rel="noopener noreferrer"
-        mat-icon-button
         class="github-button"
         aria-label="GitHub Profil besuchen"
       >
-        <mat-icon>code</mat-icon>
+        <svg lucideCodeXml size="20" aria-hidden="true"></svg>
       </a>
+
+      <button
+        class="theme-toggle"
+        type="button"
+        [attr.aria-pressed]="darkTheme()"
+        [attr.aria-label]="darkTheme() ? 'Helles Design aktivieren' : 'Dunkles Design aktivieren'"
+        [title]="darkTheme() ? 'Helles Design aktivieren' : 'Dunkles Design aktivieren'"
+        (click)="toggleTheme()"
+      >
+        @if (darkTheme()) {
+          <svg lucideSun size="20" aria-hidden="true"></svg>
+        } @else {
+          <svg lucideMoon size="20" aria-hidden="true"></svg>
+        }
+      </button>
+
+      <button
+        class="mobile-menu-button"
+        type="button"
+        aria-controls="primary-navigation"
+        [attr.aria-expanded]="mobileMenuOpen()"
+        [attr.aria-label]="mobileMenuOpen() ? 'Navigation schließen' : 'Navigation öffnen'"
+        (click)="toggleMobileMenu()"
+      >
+        @if (mobileMenuOpen()) {
+          <svg lucideX size="20" aria-hidden="true"></svg>
+        } @else {
+          <svg lucideMenu size="20" aria-hidden="true"></svg>
+        }
+      </button>
     </div>
   </mat-toolbar>
 </header>

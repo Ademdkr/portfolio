@@ -76,17 +76,5 @@ export class Projects {
       status: 'in Arbeit',
       links: {},
     },
-    /*     {
-      id: 'wiki',
-      name: 'Wiki',
-      type: 'Knowledge Management',
-      description:
-        'Internes Wiki-System für Dokumentation, Wissensdatenbank und kollaboratives Schreiben mit Markdown-Unterstützung.',
-      techStack: ['Angular', 'NestJS', 'PostgreSQL', 'Markdown', 'WebSocket'],
-      status: 'in Arbeit',
-      links: {
-        details: '/projects/wiki',
-      },
-    }, */
   ];
 }
