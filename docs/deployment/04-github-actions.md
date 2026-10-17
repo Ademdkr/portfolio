@@ -1,3 +1,5 @@
+> Historische Dokumentation. Den aktuellen Portfolio-Deployment-Ablauf beschreibt [Cloudflare Pages](10-cloudflare-pages.md).
+
 # Deployment Setup - Schritt 4: GitHub Actions Workflow
 
 ## Überblick

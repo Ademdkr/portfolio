@@ -1,24 +1,25 @@
 # Aktueller Veröffentlichungsablauf
 
-Stand: 17.10.2026. Diese Beschreibung ersetzt ältere Angaben zu `main` und zum Überspringen von Tests.
+Stand: 17.10.2026. Diese Beschreibung ersetzt die frühere Render-Pipeline.
 
 ## Prüfungen und Deployment
 
-- Pull Requests nach `master` und Pushes auf `master` führen Tests, Angular-Build, Docker-Build und Container-Smoke-Tests aus.
-- Tests laufen mit `pnpm run test:ci` über Angular/Vitest in jsdom; Fehler stoppen die Pipeline.
-- Ein echter Linter ist noch nicht eingerichtet. Der bestehende Lint-Platzhalter ist kein CI-Check.
-- Nur Pushes auf `master` starten nach erfolgreichen Prüfungen den Deploy-Job.
-- Der Job nutzt das vorhandene Secret `RENDER_DEPLOY_HOOK_PORTFOLIO`; HTTP-Fehler und fehlende Deployment-ID führen zum Abbruch.
-- Anschließend prüft er `/version.json` auf den erwarteten Commit, `/health` und die Space-Jump-Detailseite. Ohne erfolgreichen Nachweis wird der Job rot.
+- Pull Requests nach `master`, Pushes auf `master` und manuelle Workflow-Läufe führen Angular/Vitest-Tests und den statischen Pages-Build aus.
+- `pnpm run cloudflare:build` rendert alle acht Seiten vor, schreibt die Git-Version und prüft HTML, AdSense-Tag, Sitemap, Assets und Pages-Dateigrößen.
+- Die geprüften Dateien werden als GitHub-Artefakt gespeichert. Der Deploy-Job veröffentlicht genau dieses Artefakt; er baut die Anwendung nicht erneut.
+- Nur `master` darf veröffentlichen. PRs erhalten keine Cloudflare-Zugangsdaten.
+- Das GitHub-Environment `production` enthält die Secrets `CLOUDFLARE_API_TOKEN` und `CLOUDFLARE_ACCOUNT_ID`.
+- Wrangler veröffentlicht auf dem bestehenden Pages-Projekt `adem-portfolio`, Produktionsbranch `master`.
+- Anschließend prüft die Pipeline Git-Version, alle acht vorgerenderten Seiten, AdSense, Assets, Weiterleitungen und HTTP-Header.
+- Ein echter Linter und verpflichtender Branch-Schutz sind weiterhin nicht eingerichtet. PRs erst nach grüner Validierung mergen.
 
-## Versionsnachweis
+## Versionsnachweis und Domainwechsel
 
-Das Dockerfile schreibt den Build-Parameter `RENDER_GIT_COMMIT` in `/version.json`. CI setzt diesen Parameter explizit. Render stellt ihn für den jeweiligen Build bereit. Nginx liefert die Datei mit `Cache-Control: no-store` aus.
+`scripts/prepare-pages.mjs` schreibt den vollen Commit-SHA aus `GITHUB_SHA` (lokal aus Git) in `/version.json`.
+Pages liefert diese Datei und `/health` mit `Cache-Control: no-store` aus.
 
-Referenzen: [Render-Umgebungsvariablen](https://render.com/docs/environment-variables), [Docker-Build-Parameter](https://render.com/docs/docker-secrets).
+Die Pipeline prüft immer `https://adem-portfolio.pages.dev`. Während des Umzugs bleibt die zusätzliche Variable `PRODUCTION_SITE_URL` im Environment leer. Nach erfolgreicher DNS-Umstellung wird sie auf `https://ademdokur.dev` gesetzt. Danach muss auch die öffentliche Domain sämtliche Prüfungen bestehen.
 
-## Grenzen
+Render wird durch diesen Workflow nicht mehr ausgelöst. Ein separat in Render aktiviertes Auto-Deploy muss dort deaktiviert werden, bevor Render endgültig stillgelegt wird.
 
-- Die Live-Prüfung bestätigt den ausgelieferten Commit, nicht den internen Render-API-Status.
-- Der Hook ändert keine Render-Einstellungen. Ein eventuell in Render aktiviertes Auto-Deploy bleibt erhalten und sollte dort separat auf die gewünschte Freigabestrategie abgestimmt werden.
-- Branch-Schutz und verpflichtende Checks sind weiterhin nicht eingerichtet. PRs erst nach grüner Validierung mergen.
+Einrichtung, Domainwechsel und Rückfall: [Cloudflare Pages](10-cloudflare-pages.md).
