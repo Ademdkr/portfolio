@@ -41,7 +41,7 @@ Das Environment `production` enthält `CLOUDFLARE_ACCOUNT_ID` und `CLOUDFLARE_AP
 - Alle acht vorgerenderten Seiten, die tatsächlichen Sitemap-Routen, referenzierten JavaScript-/CSS-Dateien der Startseite und die Pages-Dateigrößen wurden beim Build geprüft.
 - Die lokale Pages-Auslieferung und die öffentliche Vorschau bestanden die Prüfungen für Routen, AdSense, Assets, Weiterleitungen, Sicherheitsheader und Cache-Verhalten.
 - Nach dem DNS-Wechsel bestanden alle acht Seiten dieselben Live-Prüfungen unter `https://ademdokur.dev`, einschließlich passendem Git-SHA.
-- `www` lieferte für die Startseite und `/projekte/space-jump/` die erwartete HTTPS-Weiterleitung. Die neue Weiterleitung wurde zusätzlich direkt über eine Cloudflare-IP geprüft, um alte DNS-Zwischenspeicher auszuschließen.
+- Die www-Weiterleitung wird als Cloudflare Single Redirect konfiguriert. Die Produktionspruefung kontrolliert HTTP 301 sowie den Erhalt von Pfad und Commit-Queryparameter fuer Startseite und Space-Jump-Unterseite.
 - Browserprüfung auf Vorschau und Produktionsdomain: Desktop-Chrome und Chromium mit iPhone-16-Pro-Layout, jeweils Navigation, Designwechsel und direktes Neuladen der Space-Jump-Unterseite ohne Browser- oder HTTP-Fehler.
 - Das simulierte iPhone-Layout ersetzt keinen Test auf echtem Safari.
 - Der AdSense-Meta-Tag bleibt in allen acht HTML-Seiten erhalten; die Hauptdomain hat kein `noindex`.
