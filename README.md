@@ -168,6 +168,12 @@ Das Projekt ist für Deployment auf **Render** konfiguriert:
 
 Weitere Details: [docs/deployment/06-render-setup.md](docs/deployment/06-render-setup.md)
 
+### AdSense-Verifizierung
+
+Die Inhaberschaft von `ademdokur.dev` wird für Google AdSense über den Meta-Tag `google-adsense-account` in `src/index.html` bestätigt. Der Produktions-Build übernimmt ihn in die vorgerenderten HTML-Seiten. Nach dem Deployment kann die Verifizierung in AdSense bestätigt und die Website-Überprüfung beantragt werden.
+
+Die Freigabe für H5 Games Ads und die Einbindung belohnter Anzeigen im Spiel erfolgen separat.
+
 ## 🚀 Lighthouse Optimierungen
 
 Das Portfolio ist für optimale Performance, SEO und Accessibility optimiert:
