@@ -9,6 +9,10 @@ on:
 permissions:
   contents: read
 
+defaults:
+  run:
+    shell: bash
+
 concurrency:
   group: portfolio-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
@@ -59,7 +63,7 @@ jobs:
         run: |
           docker run -d --name portfolio-ci -p 8080:80 portfolio:ci
           trap 'docker logs portfolio-ci; docker rm -f portfolio-ci' EXIT
-          curl --fail --silent --show-error --retry 10 --retry-connrefused --retry-delay 2 http://localhost:8080/health
+          curl --fail --silent --show-error --connect-timeout 2 --max-time 5 --retry 10 --retry-all-errors --retry-delay 2 http://localhost:8080/health
           curl --fail --silent --show-error http://localhost:8080/version.json | jq -e --arg sha "$GITHUB_SHA" '.commit == $sha'
           for route in / /projekte/ /projekte/space-jump/; do
             curl --fail --silent --show-error "http://localhost:8080$route" | grep 'Space Jump' > /dev/null
