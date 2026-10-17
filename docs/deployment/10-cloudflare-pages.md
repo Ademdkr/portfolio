@@ -66,7 +66,7 @@ Tokens nie in Quellcode, Logs oder Chat posten. Ein Token benötigt für diesen 
 2. In Cloudflare Workers & Pages → `adem-portfolio` → Custom domains die bestehende Domain `ademdokur.dev` zuordnen.
 3. Den bisherigen DNS-Eintrag für die Hauptdomain dokumentieren (Typ, Inhalt, Proxy), bevor das Hosting-Ziel geändert wird.
 4. Nur den bisherigen Hosting-Eintrag der Hauptdomain auf das Pages-Ziel `adem-portfolio.pages.dev` umstellen. Cloudflare kann dies beim Aktivieren der Domain anbieten. Mail-Einträge (MX/TXT), andere Projekte und `space-jump` bleiben erhalten.
-5. Die bereits vorhandene Domain `www.ademdokur.dev` ebenfalls im Pages-Projekt zuordnen und ihren bisherigen Render-CNAME auf das Pages-Ziel umstellen. Die bestehende Weiterleitung auf die Hauptdomain bleibt durch `_redirects` erhalten.
+5. Die bereits vorhandene Domain `www.ademdokur.dev` ebenfalls im Pages-Projekt zuordnen und ihren bisherigen Render-CNAME auf das Pages-Ziel umstellen. Die Weiterleitung auf die Hauptdomain wird als Single Redirect in der Domain-Zone eingerichtet (siehe unten).
 6. Auf aktiven Domain-/Zertifikatstatus warten, HTTPS sowie alle Routen und den AdSense-Tag direkt auf der Hauptdomain testen.
 7. `PRODUCTION_SITE_URL` setzen und die Pipeline erneut auf `master` ausführen. Damit gehört die Hauptdomain zur dauerhaften Deployment-Prüfung.
 8. Erst nach erfolgreicher Umstellung Render-Auto-Deploy deaktivieren; den alten Dienst zunächst als Rückfall behalten. Endgültiges Entfernen erfolgt separat.
@@ -85,6 +85,29 @@ Solange Render noch vorhanden ist, kann der vorher dokumentierte DNS-Eintrag wie
 - [Header](https://developers.cloudflare.com/pages/configuration/headers/)
 - [Routing und HTML-Auslieferung](https://developers.cloudflare.com/pages/configuration/serving-pages/)
 
+## www-Weiterleitung in Cloudflare
+
+Hostnamen-Weiterleitungen gehoeren in Cloudflare Rules; Pages unterstuetzt sie nicht als Quelle in `_redirects`.
+
+Unter ademdokur.dev -> Rules -> Overview -> Create rule -> Redirect Rule:
+
+- Name: `Portfolio www to apex`
+- Match: Wildcard pattern
+- Request URL: `http*://www.ademdokur.dev/*`
+- Target URL: `https://ademdokur.dev/${2}`
+- Status: `301`
+- Preserve query string: aktiv
+
+Der erste Stern erfasst den optionalen HTTPS-Buchstaben, der zweite den Pfad; das Ziel verwendet daher `${2}`. Die Regel erfasst ausschliesslich www.ademdokur.dev. Proxied-DNS ist erforderlich. Die lokale Wrangler-OAuth-Anmeldung besitzt keine Rules-Schreibrechte; die Regel wird begleitet im Dashboard eingerichtet.
+
+Die Produktionspruefung kontrolliert die Weiterleitung mit einem Commit-Queryparameter fuer Startseite und Space-Jump-Unterseite. So werden Pfad und Query-Erhalt ohne alte Redirect-Cacheeintraege geprueft.
+
 ## Erfasste Ausgangslage
 
 Am 17.10.2026 vor dem Wechsel lieferte oeffentliches DNS fuer `ademdokur.dev` den A-Wert `216.24.57.1` und fuer `www.ademdokur.dev` den CNAME `portfolio-k18k.onrender.com`. Die www-Adresse leitete mit HTTP 301 auf die Hauptdomain weiter, einschliesslich Unterseiten. Vor der Umstellung sind Typ, Inhalt und Proxy-Status im Dashboard nochmals zu bestaetigen und fuer einen Rueckfall zu notieren.
+
+## Aktueller Betriebsstand
+
+Die Hauptdomain und www zeigen seit dem 17.10.2026 auf Cloudflare Pages. `PRODUCTION_SITE_URL` ist im GitHub-Environment `production` auf `https://ademdokur.dev` gesetzt. Render-Auto-Deploy wurde vom Nutzer auf Off gesetzt; der Dienst bleibt als Rueckfall bestehen. Einzelheiten und Testergebnisse stehen im [Migrationsbericht](11-cloudflare-umzug-2026-10-17.md).
+
+[Cloudflare: Single Redirect im Dashboard erstellen](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/).

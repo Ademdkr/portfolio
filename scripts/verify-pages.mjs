@@ -51,6 +51,20 @@ if (site) {
   const root = await fetch(site, { signal: AbortSignal.timeout(15000) });
   assert.equal(root.headers.get('x-content-type-options'), 'nosniff');
   assert.equal(root.headers.get('x-frame-options'), 'SAMEORIGIN');
+  if (site.hostname === 'ademdokur.dev') {
+    assert.doesNotMatch(root.headers.get('x-robots-tag') || '', /noindex/i);
+    for (const path of ['/', '/projekte/space-jump/']) {
+      const source = new URL(path, 'https://www.ademdokur.dev');
+      source.searchParams.set('deployment', commit);
+      const response = await fetch(source, { redirect: 'manual', signal: AbortSignal.timeout(15000) });
+      assert.equal(response.status, 301, source.href + ': www must redirect');
+      const target = new URL(source);
+      target.hostname = site.hostname;
+      assert.equal(new URL(response.headers.get('location'), source).href, target.href,
+        'www redirect must preserve path and query');
+    }
+  }
+
   for (const path of ['/assets/projects/space-jump/screenshots/gameplay.png', '/manifest.json', '/robots.txt']) {
     const response = await fetch(new URL(path, site), { signal: AbortSignal.timeout(15000) });
     assert.equal(response.status, 200, path);
