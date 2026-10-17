@@ -54,8 +54,8 @@ Modernes, responsives Portfolio zur Präsentation meiner Full-Stack-Projekte und
 ### Build & DevOps
 
 - **[Angular CLI](https://angular.dev/tools/cli)** - Build System
-- **[Docker](https://www.docker.com/)** - Containerization
-- **[Nginx](https://nginx.org/)** - Production Web Server
+- **[Docker](https://www.docker.com/)** - Optionale lokale Container
+- **[Nginx](https://nginx.org/)** - Optionaler Container-Webserver
 - **[GitHub Actions](https://github.com/features/actions)** - CI/CD Pipeline
 - **[Cloudflare Pages](https://pages.cloudflare.com/)** - Statisches Hosting ohne Server-Idle
 
@@ -170,6 +170,7 @@ Das Portfolio wird als statische Angular-Anwendung auf **Cloudflare Pages** ver�
 
 Einrichtung und Domain-Umstellung: [Cloudflare Pages](docs/deployment/10-cloudflare-pages.md).
 Aktueller Pipeline-Ablauf: [CI/CD-Veröffentlichung](docs/deployment/09-ci-cd-veroeffentlichung.md).
+Abgeschlossener Domain-Wechsel und Nachweise: [Migrationsbericht vom 17.10.2026](docs/deployment/11-cloudflare-umzug-2026-10-17.md).
 
 ### AdSense-Verifizierung
 

@@ -88,3 +88,7 @@ Solange Render noch vorhanden ist, kann der vorher dokumentierte DNS-Eintrag wie
 ## Erfasste Ausgangslage
 
 Am 17.10.2026 vor dem Wechsel lieferte oeffentliches DNS fuer `ademdokur.dev` den A-Wert `216.24.57.1` und fuer `www.ademdokur.dev` den CNAME `portfolio-k18k.onrender.com`. Die www-Adresse leitete mit HTTP 301 auf die Hauptdomain weiter, einschliesslich Unterseiten. Vor der Umstellung sind Typ, Inhalt und Proxy-Status im Dashboard nochmals zu bestaetigen und fuer einen Rueckfall zu notieren.
+
+## Aktueller Betriebsstand
+
+Die Hauptdomain und www zeigen seit dem 17.10.2026 auf Cloudflare Pages. `PRODUCTION_SITE_URL` ist im GitHub-Environment `production` auf `https://ademdokur.dev` gesetzt. Render-Auto-Deploy wurde vom Nutzer auf Off gesetzt; der Dienst bleibt als Rueckfall bestehen. Einzelheiten und Testergebnisse stehen im [Migrationsbericht](11-cloudflare-umzug-2026-10-17.md).
