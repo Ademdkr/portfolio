@@ -1,0 +1,108 @@
+<div class="project-detail">
+  <nav class="back-nav" aria-label="Projektnavigation">
+    <a mat-button routerLink="/projekte">
+      <mat-icon aria-hidden="true">arrow_back</mat-icon>
+      Zurück zu Projekten
+    </a>
+  </nav>
+
+  <header class="project-header">
+    <h1>Space Jump</h1>
+    <p class="short-description">
+      Ein 2D-Endless-Runner im Weltraum: ausweichen, Gold sammeln und den eigenen Rekord knacken.
+    </p>
+    <mat-chip-set aria-label="Verwendete Technologien">
+      @for (tech of techStack; track tech) {
+        <mat-chip>{{ tech }}</mat-chip>
+      }
+    </mat-chip-set>
+    <a mat-raised-button color="primary" [href]="demoUrl" target="_blank" rel="noopener noreferrer">
+      <mat-icon aria-hidden="true">sports_esports</mat-icon>
+      Jetzt spielen
+      <span class="sr-only">(öffnet in einem neuen Tab)</span>
+    </a>
+    <p class="play-note">Direkt im Browser spielbar, auch ohne Registrierung.</p>
+  </header>
+
+  <figure class="hero-screenshot">
+    <a
+      href="/assets/projects/space-jump/screenshots/gameplay.png"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Gameplay-Screenshot in voller Größe in einem neuen Tab öffnen"
+    >
+      <img
+        src="/assets/projects/space-jump/screenshots/gameplay.png"
+        alt="Space Jump mit Starbike, aktivem Schild, Laserfeuer, heranfliegenden Gegnern und Gold im Weltraum"
+        width="1440"
+        height="665"
+        fetchpriority="high"
+      />
+    </a>
+    <figcaption>
+      Mit Starbike, Schild und Laser durch den Weltraum – Gegnern ausweichen und Gold sammeln.
+    </figcaption>
+  </figure>
+
+  <section class="section" aria-labelledby="features-heading">
+    <h2 id="features-heading"><mat-icon aria-hidden="true">extension</mat-icon>Funktionen</h2>
+    <div class="features-grid">
+      @for (feature of features; track feature.title) {
+        <mat-card>
+          <mat-card-content>
+            <mat-icon class="feature-icon" aria-hidden="true">{{ feature.icon }}</mat-icon>
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="screenshots-heading">
+    <h2 id="screenshots-heading">
+      <mat-icon aria-hidden="true">image</mat-icon>Einblicke ins Spiel
+    </h2>
+    <p class="section-intro">Die Bilder lassen sich in einem neuen Tab in voller Größe öffnen.</p>
+    <div class="screenshots-grid">
+      @for (screenshot of screenshots; track screenshot.file) {
+        <figure>
+          <a
+            [href]="'/assets/projects/space-jump/screenshots/' + screenshot.file"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="screenshot.title + ' in voller Größe in einem neuen Tab öffnen'"
+          >
+            <img
+              [src]="'/assets/projects/space-jump/screenshots/' + screenshot.file"
+              [alt]="screenshot.alt"
+              width="1440"
+              height="665"
+              loading="lazy"
+            />
+          </a>
+          <figcaption>
+            <h3>{{ screenshot.title }}</h3>
+            <p>{{ screenshot.description }}</p>
+          </figcaption>
+        </figure>
+      }
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="technology-heading">
+    <h2 id="technology-heading">
+      <mat-icon aria-hidden="true">account_tree</mat-icon>Technik & Umsetzung
+    </h2>
+    <div class="technical-grid">
+      @for (detail of technicalDetails; track detail.title) {
+        <mat-card>
+          <mat-card-content>
+            <h3>{{ detail.title }}</h3>
+            <p>{{ detail.description }}</p>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  </section>
+</div>

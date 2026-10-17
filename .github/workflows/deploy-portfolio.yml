@@ -1,16 +1,29 @@
-name: Deploy Portfolio to Render
+name: Portfolio CI/CD
 
 on:
+  pull_request:
+    branches: [master]
   push:
-    branches:
-      - master
+    branches: [master]
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: portfolio-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  validate:
+    name: Tests, build and Docker smoke test
     runs-on: ubuntu-latest
-
+    timeout-minutes: 15
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up pnpm
@@ -22,40 +35,75 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm'
+          cache: pnpm
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run Linter
-        run: pnpm run lint || echo "Linter not configured, skipping..."
+      - name: Run tests
+        run: pnpm run test:ci
 
-      - name: Run Tests
-        run: pnpm run test -- --watch=false --browsers=ChromeHeadless || echo "Tests not configured, skipping..."
-
-      - name: Build Application
+      - name: Build application
         run: pnpm run build
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build Docker Image
+      - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: false
-          tags: portfolio:${{ github.sha }}
+          load: true
+          tags: portfolio:ci
+          build-args: RENDER_GIT_COMMIT=${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Trigger Render Deploy
+      - name: Check container and prerendered routes
+        run: |
+          docker run -d --name portfolio-ci -p 8080:80 portfolio:ci
+          trap 'docker logs portfolio-ci; docker rm -f portfolio-ci' EXIT
+          curl --fail --silent --show-error --connect-timeout 2 --max-time 5 --retry 10 --retry-all-errors --retry-delay 2 http://localhost:8080/health
+          curl --fail --silent --show-error http://localhost:8080/version.json | jq -e --arg sha "$GITHUB_SHA" '.commit == $sha'
+          for route in / /projekte/ /projekte/space-jump/; do
+            curl --fail --silent --show-error "http://localhost:8080$route" | grep 'Space Jump' > /dev/null
+          done
+          curl --fail --silent --show-error --output /dev/null http://localhost:8080/assets/projects/space-jump/screenshots/gameplay.png
+
+  deploy:
+    name: Deploy and verify production
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      SITE_URL: https://ademdokur.dev
+    steps:
+      - name: Trigger Render deploy
         env:
           RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK_PORTFOLIO }}
         run: |
-          if [ -n "$RENDER_DEPLOY_HOOK" ]; then
-            curl -X POST "$RENDER_DEPLOY_HOOK"
-            echo "✅ Render deployment triggered successfully"
-          else
-            echo "⚠️ RENDER_DEPLOY_HOOK_PORTFOLIO not configured"
+          if [ -z "$RENDER_DEPLOY_HOOK" ]; then
+            echo '::error::RENDER_DEPLOY_HOOK_PORTFOLIO is missing'
             exit 1
           fi
+          response=$(curl --fail-with-body --silent --show-error --connect-timeout 10 --max-time 60 -X POST "$RENDER_DEPLOY_HOOK")
+          deploy_id=$(jq -er '.deploy.id' <<< "$response")
+          echo "Render accepted deployment: $deploy_id"
+
+      - name: Wait for the expected commit to become healthy
+        run: |
+          for attempt in $(seq 1 60); do
+            response=$(curl --fail --silent --show-error --connect-timeout 10 --max-time 20 -H 'Cache-Control: no-cache' "$SITE_URL/version.json?commit=$GITHUB_SHA" || true)
+            deployed_commit=$(jq -r '.commit // empty' <<< "$response" 2>/dev/null || true)
+            if [ "$deployed_commit" = "$GITHUB_SHA" ]; then
+              curl --fail --silent --show-error --retry 3 --max-time 30 "$SITE_URL/health"
+              curl --fail --silent --show-error --max-time 30 "$SITE_URL/projekte/space-jump/" | grep 'Space Jump' > /dev/null
+              echo "Production verified at $SITE_URL (commit $GITHUB_SHA)"
+              exit 0
+            fi
+            echo "Waiting for commit $GITHUB_SHA ($attempt/60)"
+            sleep 15
+          done
+          echo '::error::The expected production commit did not become healthy in time'
+          exit 1

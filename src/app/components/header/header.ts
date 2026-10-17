@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { LucideCodeXml, LucideMenu, LucideMoon, LucideSun, LucideX } from '@lucide/angular';
@@ -19,10 +19,11 @@ import { LucideCodeXml, LucideMenu, LucideMoon, LucideSun, LucideX } from '@luci
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header {
+export class Header implements OnDestroy {
   readonly mobileMenuOpen = signal(false);
   readonly darkTheme = signal(false);
   private readonly document = inject(DOCUMENT);
+  private themeTransitionTimer?: number;
 
   constructor() {
     const browserWindow = this.document.defaultView;
@@ -60,7 +61,7 @@ export class Header {
 
   toggleTheme(): void {
     this.darkTheme.update((dark) => !dark);
-    this.applyTheme();
+    this.applyTheme(true);
 
     try {
       this.document.defaultView?.localStorage.setItem(
@@ -72,7 +73,30 @@ export class Header {
     }
   }
 
-  private applyTheme(): void {
-    this.document.documentElement.setAttribute('data-theme', this.darkTheme() ? 'dark' : 'light');
+  ngOnDestroy(): void {
+    this.document.defaultView?.clearTimeout(this.themeTransitionTimer);
+    this.document.documentElement.classList.remove('theme-switching');
+  }
+
+  private applyTheme(animate = false): void {
+    const root = this.document.documentElement;
+    const browserWindow = this.document.defaultView;
+
+    if (animate && browserWindow) {
+      browserWindow.clearTimeout(this.themeTransitionTimer);
+      root.classList.remove('theme-switching');
+
+      if (!browserWindow.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('theme-switching');
+        // Apply the shared transition before changing any theme colors.
+        void root.offsetWidth;
+        this.themeTransitionTimer = browserWindow.setTimeout(() => {
+          root.classList.remove('theme-switching');
+          this.themeTransitionTimer = undefined;
+        }, 200);
+      }
+    }
+
+    root.setAttribute('data-theme', this.darkTheme() ? 'dark' : 'light');
   }
 }

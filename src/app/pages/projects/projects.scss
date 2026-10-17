@@ -68,8 +68,11 @@
 
 .project-card {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  // Share section heights between cards in the same grid row.
+  display: grid;
+  grid-row: span 5;
+  grid-template-rows: subgrid;
+  row-gap: 0;
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -100,9 +103,9 @@
   }
 
   mat-card-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
     gap: 1.5rem;
     padding-bottom: 1.25rem;
   }

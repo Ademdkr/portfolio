@@ -87,6 +87,14 @@ export class Landing {
       liveUrl: 'https://budget-tracker.ademdokur.dev',
       detailsUrl: '/projekte/budget-tracker',
     },
+    {
+      title: 'Space Jump',
+      description:
+        '2D-Endless-Runner mit verschiedenen Bewegungsarten, Equipment, Skins und Online-Rangliste. Mit Steuerung für Desktop und Touch-Geräte.',
+      techStack: ['Phaser 3', 'TypeScript', 'Vite', 'Cloudflare Pages', 'D1'],
+      liveUrl: 'https://space-jump.ademdokur.dev',
+      detailsUrl: '/projekte/space-jump',
+    },
   ];
 
   readonly skillCategories: SkillCategory[] = [
