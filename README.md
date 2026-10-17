@@ -176,6 +176,8 @@ Abgeschlossener Domain-Wechsel und Nachweise: [Migrationsbericht vom 17.10.2026]
 
 Die Inhaberschaft von `ademdokur.dev` wird für Google AdSense über den Meta-Tag `google-adsense-account` in `src/index.html` bestätigt. Der Produktions-Build übernimmt ihn in die vorgerenderten HTML-Seiten. Nach dem Deployment kann die Verifizierung in AdSense bestätigt und die Website-Überprüfung beantragt werden.
 
+Die Datei `public/ads.txt` autorisiert Google als direkten Anzeigenverkäufer für das hinterlegte Publisher-Konto. Angular kopiert sie beim Build an die Wurzel der Website; sie ist nach dem Deployment unter `https://ademdokur.dev/ads.txt` erreichbar. Die Datei selbst bindet keine Anzeigen ein. Den ads.txt-Status aktualisiert Google nach einem erneuten Abruf.
+
 Die Freigabe für H5 Games Ads und die Einbindung belohnter Anzeigen im Spiel erfolgen separat.
 
 ## 🚀 Lighthouse Optimierungen
