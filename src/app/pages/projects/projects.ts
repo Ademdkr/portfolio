@@ -67,6 +67,20 @@ export class Projects {
       featured: true,
     },
     {
+      id: 'space-jump',
+      name: 'Space Jump',
+      type: 'Browsergame',
+      description:
+        '2D-Endless-Runner mit verschiedenen Bewegungsarten, Equipment, Skins und Online-Rangliste. Entwickelt mit Phaser und TypeScript, mit Steuerung für Desktop und Touch-Geräte.',
+      techStack: ['Phaser 3', 'TypeScript', 'Vite', 'Cloudflare Pages', 'D1'],
+      status: 'fertig',
+      links: {
+        demo: 'https://space-jump.ademdokur.dev',
+        details: '/projekte/space-jump',
+      },
+      featured: true,
+    },
+    {
       id: 'mini-shop',
       name: 'Mini-Shop',
       type: 'E-Commerce Platform',

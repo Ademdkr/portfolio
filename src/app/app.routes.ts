@@ -16,6 +16,12 @@ export const routes: Routes = [
           import('./pages/projects/issue-tracker/issue-tracker').then((m) => m.IssueTracker),
       },
       {
+        path: 'space-jump',
+        title: 'Space Jump | Adem Dokur',
+        loadComponent: () =>
+          import('./pages/projects/space-jump/space-jump').then((m) => m.SpaceJump),
+      },
+      {
         path: 'budget-tracker',
         loadComponent: () =>
           import('./pages/projects/budget-tracker/budget-tracker').then((m) => m.BudgetTracker),

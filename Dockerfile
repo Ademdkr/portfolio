@@ -25,6 +25,10 @@ FROM nginx:alpine
 # Angular 21 outputs to dist/portfolio/browser by default
 COPY --from=builder /app/dist/portfolio/browser /usr/share/nginx/html
 
+# Render supplies this build argument; CI passes the commit being validated.
+ARG RENDER_GIT_COMMIT=local
+RUN printf '{"commit":"%s"}\n' "$RENDER_GIT_COMMIT" > /usr/share/nginx/html/version.json
+
 # Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
