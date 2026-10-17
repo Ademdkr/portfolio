@@ -57,7 +57,7 @@ Modernes, responsives Portfolio zur Präsentation meiner Full-Stack-Projekte und
 - **[Docker](https://www.docker.com/)** - Containerization
 - **[Nginx](https://nginx.org/)** - Production Web Server
 - **[GitHub Actions](https://github.com/features/actions)** - CI/CD Pipeline
-- **[Render](https://render.com/)** - Cloud Hosting Platform
+- **[Cloudflare Pages](https://pages.cloudflare.com/)** - Statisches Hosting ohne Server-Idle
 
 ## 📁 Projekt-Struktur
 
@@ -153,20 +153,23 @@ npm run build
 docker build -t portfolio .
 
 # Container starten
-docker run -p 8080:8080 portfolio
+docker run -p 8080:80 portfolio
 ```
 
 ### Deployment
 
-Das Projekt ist für Deployment auf **Render** konfiguriert:
+Das Portfolio wird als statische Angular-Anwendung auf **Cloudflare Pages** veröffentlicht.
 
-1. **GitHub-Repository verbinden**
-2. **Web Service erstellen**
-   - Build Command: `npm install && npm run build`
-   - Start Command: (automatisch via Dockerfile)
-3. **Custom Domain konfigurieren** (optional)
+- Produktionsbranch: `master`; Pull Requests werden vor dem Merge geprüft.
+- GitHub Actions führt Tests und den Pages-Build aus und veröffentlicht das geprüfte Build-Artefakt mit Wrangler.
+- Das Environment `production` enthält `CLOUDFLARE_API_TOKEN` und `CLOUDFLARE_ACCOUNT_ID`.
+- Die Pipeline prüft nach der Veröffentlichung Git-Version, alle acht Seiten, Assets, Weiterleitungen und den AdSense-Tag.
+- Docker/Nginx bleiben optional für lokale Container und als vorübergehender Render-Rückfall erhalten.
 
-Weitere Details: [docs/deployment/06-render-setup.md](docs/deployment/06-render-setup.md)
+`pnpm run cloudflare:build` erstellt und prüft das Pages-Artefakt. `pnpm run cloudflare:dev` startet dessen lokale Vorschau.
+
+Einrichtung und Domain-Umstellung: [Cloudflare Pages](docs/deployment/10-cloudflare-pages.md).
+Aktueller Pipeline-Ablauf: [CI/CD-Veröffentlichung](docs/deployment/09-ci-cd-veroeffentlichung.md).
 
 ### AdSense-Verifizierung
 
@@ -227,7 +230,7 @@ Full-Stack-Webanwendung zur Verwaltung persönlicher Finanzen mit Chart.js Visua
 Weitere Dokumentation findest du im [docs/](docs/) Verzeichnis:
 
 - **Frontend**: Implementierungs-Guides für alle Seiten
-- **Deployment**: Docker, CI/CD, Render-Setup
+- **Deployment**: Cloudflare Pages, CI/CD, optionales Docker und historisches Render-Setup
 - **Git**: Git-Workflow und Best Practices
 
 ## 🤝 Contributing

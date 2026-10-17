@@ -1,0 +1,10 @@
+# Keep the existing www-to-apex canonical redirect.
+https://www.ademdokur.dev/* https://ademdokur.dev/:splat 301
+
+# Preserve links to the English routes from the previous sitemap.
+/about /ueber-mich/ 301
+/projects /projekte/ 301
+/projects/budget-tracker /projekte/budget-tracker/ 301
+/projects/issue-tracker /projekte/issue-tracker/ 301
+/projects/space-jump /projekte/space-jump/ 301
+/contact /kontakt/ 301

@@ -1,3 +1,5 @@
+> Historische Dokumentation. Den aktuellen Portfolio-Deployment-Ablauf beschreibt [Cloudflare Pages](10-cloudflare-pages.md).
+
 # Deployment Setup - Schritt 6: Render Service einrichten
 
 ## Überblick
