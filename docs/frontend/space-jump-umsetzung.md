@@ -41,7 +41,7 @@ Ziel: Projektkarte, Detailseite und Eintrag unter „Ausgewählte Projekte“ au
 
 - [x] Tests reparieren und CI für PRs aktivieren; Fehler nicht mehr übergehen.
 - [x] Deploy-Hook und Prüfung des live ausgelieferten Commits absichern.
-- [ ] Änderungen committen, Branch pushen und PR nach `master` erstellen.
+- [x] Änderungen committen, Branch pushen und PR nach `master` erstellen: [PR #6](https://github.com/Ademdkr/portfolio/pull/6).
 - [ ] Grüne PR-Checks abwarten, mergen und Deployment live prüfen.
 
 Lokal: drei Tests und Produktionsbuild erfolgreich. Docker wird im PR geprüft, da lokal kein Docker-Daemon läuft. Details: [CI/CD](../deployment/09-ci-cd-veroeffentlichung.md).
