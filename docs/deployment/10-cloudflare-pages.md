@@ -66,7 +66,7 @@ Tokens nie in Quellcode, Logs oder Chat posten. Ein Token benötigt für diesen 
 2. In Cloudflare Workers & Pages → `adem-portfolio` → Custom domains die bestehende Domain `ademdokur.dev` zuordnen.
 3. Den bisherigen DNS-Eintrag für die Hauptdomain dokumentieren (Typ, Inhalt, Proxy), bevor das Hosting-Ziel geändert wird.
 4. Nur den bisherigen Hosting-Eintrag der Hauptdomain auf das Pages-Ziel `adem-portfolio.pages.dev` umstellen. Cloudflare kann dies beim Aktivieren der Domain anbieten. Mail-Einträge (MX/TXT), andere Projekte und `space-jump` bleiben erhalten.
-5. Einen vorhandenen `www`-Eintrag und dessen Weiterleitung separat prüfen; keine neue Domainvariante ohne Bedarf einführen.
+5. Die bereits vorhandene Domain `www.ademdokur.dev` ebenfalls im Pages-Projekt zuordnen und ihren bisherigen Render-CNAME auf das Pages-Ziel umstellen. Die bestehende Weiterleitung auf die Hauptdomain bleibt durch `_redirects` erhalten.
 6. Auf aktiven Domain-/Zertifikatstatus warten, HTTPS sowie alle Routen und den AdSense-Tag direkt auf der Hauptdomain testen.
 7. `PRODUCTION_SITE_URL` setzen und die Pipeline erneut auf `master` ausführen. Damit gehört die Hauptdomain zur dauerhaften Deployment-Prüfung.
 8. Erst nach erfolgreicher Umstellung Render-Auto-Deploy deaktivieren; den alten Dienst zunächst als Rückfall behalten. Endgültiges Entfernen erfolgt separat.
@@ -84,3 +84,7 @@ Solange Render noch vorhanden ist, kann der vorher dokumentierte DNS-Eintrag wie
 - [Eigene Domains](https://developers.cloudflare.com/pages/configuration/custom-domains/)
 - [Header](https://developers.cloudflare.com/pages/configuration/headers/)
 - [Routing und HTML-Auslieferung](https://developers.cloudflare.com/pages/configuration/serving-pages/)
+
+## Erfasste Ausgangslage
+
+Am 17.10.2026 vor dem Wechsel lieferte oeffentliches DNS fuer `ademdokur.dev` den A-Wert `216.24.57.1` und fuer `www.ademdokur.dev` den CNAME `portfolio-k18k.onrender.com`. Die www-Adresse leitete mit HTTP 301 auf die Hauptdomain weiter, einschliesslich Unterseiten. Vor der Umstellung sind Typ, Inhalt und Proxy-Status im Dashboard nochmals zu bestaetigen und fuer einen Rueckfall zu notieren.

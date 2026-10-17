@@ -1,3 +1,6 @@
+# Keep the existing www-to-apex canonical redirect.
+https://www.ademdokur.dev/* https://ademdokur.dev/:splat 301
+
 # Preserve links to the English routes from the previous sitemap.
 /about /ueber-mich/ 301
 /projects /projekte/ 301
